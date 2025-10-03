@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Describe Symptoms - Rural Health AI</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <span class="logo-icon">🏥</span>
+                <span>Swasthya Saathi</span>
+            </div>
+        </header>
+
+        <main class="symptoms-container">
+            <h1>Describe Your Symptoms</h1>
+            
+            <div class="input-methods">
+                <!-- Text Input -->
+                <div class="text-input-section">
+                    <label for="symptomsText">Type your symptoms:</label>
+                    <textarea 
+                        id="symptomsText" 
+                        placeholder="Example: I have fever, headache, and body pain since yesterday..."
+                        rows="6"
+                    ></textarea>
+                </div>
+
+                <!-- Voice Input -->
+                <div class="voice-input-section">
+                    <button id="voiceBtn" class="voice-btn">
+                        🎤 Record Voice Description
+                    </button>
+                    <div id="voiceStatus" class="voice-status"></div>
+                </div>
+            </div>
+
+            <!-- Additional Options -->
+            <div class="additional-options">
+                <label class="checkbox-container">
+                    <input type="checkbox" id="ayushmanCard">
+                    <span class="checkmark"></span>
+                    I have Ayushman Bharat card
+                </label>
+
+                <div id="ayushmanDetails" class="ayushman-details hidden">
+                    <input type="text" id="ayushmanNumber" placeholder="Ayushman card number (optional)">
+                </div>
+
+                <label class="checkbox-container">
+                    <input type="checkbox" id="shareLocation">
+                    <span class="checkmark"></span>
+                    Share my location for nearby hospitals
+                </label>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button id="analyzeBtn" class="btn primary-btn">Analyze Symptoms</button>
+                <button id="backBtn" class="btn secondary-btn">Back</button>
+            </div>
+
+            <!-- Loading Indicator -->
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Analyzing your symptoms with AI...</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/voice-input.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
