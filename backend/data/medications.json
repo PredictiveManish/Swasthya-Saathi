@@ -1,0 +1,35 @@
+{
+  "common_medications": [
+    {
+      "id": 1,
+      "name": "Paracetamol",
+      "generic_name": "Acetaminophen",
+      "dosage": "500mg",
+      "frequency": "Every 6 hours",
+      "purpose": "Fever, Pain relief",
+      "side_effects": ["Rare: Skin rash", "Overdose: Liver damage"],
+      "precautions": ["Do not exceed 4g per day", "Avoid alcohol"]
+    },
+    {
+      "id": 2,
+      "name": "Ibuprofen",
+      "generic_name": "Ibuprofen",
+      "dosage": "400mg",
+      "frequency": "Every 8 hours",
+      "purpose": "Pain, Inflammation",
+      "side_effects": ["Stomach upset", "Increased BP"],
+      "precautions": ["Take with food", "Not for kidney patients"]
+    },
+    {
+      "id": 3,
+      "name": "Amoxicillin",
+      "generic_name": "Amoxicillin",
+      "dosage": "500mg",
+      "frequency": "Every 8 hours",
+      "purpose": "Bacterial infections",
+      "side_effects": ["Diarrhea", "Allergic reactions"],
+      "precautions": ["Complete full course", "Report allergies"]
+    }
+  ],
+  "medication_schedules": []
+}

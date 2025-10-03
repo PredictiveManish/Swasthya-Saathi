@@ -1,0 +1,60 @@
+{
+  "symptom_patterns": {
+    "emergency_indicators": [
+      "chest pain",
+      "difficulty breathing",
+      "severe bleeding",
+      "unconscious",
+      "severe headache",
+      "paralysis",
+      "severe injury",
+      "burn",
+      "poisoning",
+      "seizure",
+      "stroke symptoms",
+      "heart attack",
+      "suffocating"
+    ],
+    "opd_indicators": [
+      "fever more than 3 days",
+      "persistent cough",
+      "abdominal pain",
+      "vomiting",
+      "diarrhea",
+      "rash",
+      "mild injury",
+      "headache",
+      "body ache",
+      "cold",
+      "cough"
+    ],
+    "self_care_indicators": [
+      "mild cold",
+      "slight fever",
+      "minor cut",
+      "headache",
+      "muscle pain",
+      "indigestion",
+      "stress",
+      "insomnia"
+    ]
+  },
+  "common_conditions": {
+    "fever": {
+      "self_care_max_temp": 38.0,
+      "opd_threshold": 39.0,
+      "emergency_threshold": 40.5
+    },
+    "blood_pressure": {
+      "emergency_high": 180,
+      "emergency_low": 90
+    }
+  },
+  "first_aid_advice": {
+    "fever": "Rest, hydrate, take paracetamol if no allergies. Monitor temperature.",
+    "headache": "Rest in dark room, cold compress, stay hydrated.",
+    "minor_cut": "Clean with water, apply antiseptic, bandage if needed.",
+    "burn": "Cool with running water for 10-15 minutes, cover with clean cloth.",
+    "sprain": "Rest, Ice, Compression, Elevation (RICE method)."
+  }
+}

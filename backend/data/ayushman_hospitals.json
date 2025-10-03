@@ -1,0 +1,58 @@
+{
+  "ayushman_empaneled": [
+    {
+      "hospital_id": 1,
+      "empanelment_id": "AB-PMJAY-DEL-001",
+      "empanelment_date": "2023-01-15",
+      "valid_until": "2025-12-31",
+      "package_rates": {
+        "cardiac_surgery": 150000,
+        "normal_delivery": 9000,
+        "c_section": 16500,
+        "cataract_surgery": 10000,
+        "general_medicine": 5000
+      },
+      "claims_processed": 2450,
+      "success_rate": 94.5
+    },
+    {
+      "hospital_id": 2,
+      "empanelment_id": "AB-PMJAY-DEL-002",
+      "empanelment_date": "2023-02-20",
+      "valid_until": "2025-12-31",
+      "package_rates": {
+        "general_surgery": 45000,
+        "orthopedic_surgery": 60000,
+        "general_medicine": 4500
+      },
+      "claims_processed": 1870,
+      "success_rate": 92.3
+    },
+    {
+      "hospital_id": 4,
+      "empanelment_id": "AB-PMJAY-UP-045",
+      "empanelment_date": "2023-03-10",
+      "valid_until": "2025-12-31",
+      "package_rates": {
+        "basic_health_check": 1200,
+        "general_medicine": 3000,
+        "maternal_care": 7000
+      },
+      "claims_processed": 890,
+      "success_rate": 88.7
+    },
+    {
+      "hospital_id": 5,
+      "empanelment_id": "AB-PMJAY-BIH-078",
+      "empanelment_date": "2023-01-05",
+      "valid_until": "2025-12-31",
+      "package_rates": {
+        "primary_care": 800,
+        "maternal_health": 5000,
+        "child_health": 2000
+      },
+      "claims_processed": 560,
+      "success_rate": 85.2
+    }
+  ]
+}

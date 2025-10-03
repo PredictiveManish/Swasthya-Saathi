@@ -1,0 +1,20 @@
+[
+  {
+    "timestamp": "2025-10-03T17:08:18.932511",
+    "user_data": {
+      "phone": "",
+      "location": {
+        "lat": 28.6139,
+        "lng": 77.209
+      },
+      "ayushman_card": true
+    },
+    "symptoms": "Hi, I've issues of fevers, cough from 3 days",
+    "triage_result": {
+      "severity": "OPD Visit",
+      "advice": "Please consult a healthcare provider for proper diagnosis",
+      "reasoning": "AI analysis unavailable - defaulting to doctor consultation"
+    },
+    "session_id": "20251003170818"
+  }
+]
