@@ -11,20 +11,32 @@ class HospitalFinder:
     def load_hospitals(self):
         """Load hospital data from JSON file"""
         try:
-            with open('data/hospitals.json', 'r', encoding='utf-8') as f:
+            # Use absolute path
+            file_path = os.path.join(os.path.dirname(__file__), 'data', 'hospitals.json')
+            with open(file_path, 'r', encoding='utf-8') as f:
                 data = json.load(f)
+                print(f"✅ Loaded {len(data.get('hospitals', []))} hospitals")
                 return data.get('hospitals', [])
         except FileNotFoundError:
-            print("Hospital data file not found, using mock data")
+            print("❌ Hospital data file not found, using mock data")
+            return self.get_mock_hospitals()
+        except Exception as e:
+            print(f"❌ Error loading hospitals: {e}")
             return self.get_mock_hospitals()
     
     def load_ayushman_data(self):
         """Load Ayushman hospital data"""
         try:
-            with open('data/ayushman_hospitals.json', 'r', encoding='utf-8') as f:
-                return json.load(f)
+            file_path = os.path.join(os.path.dirname(__file__), 'data', 'ayushman_hospitals.json')
+            with open(file_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                print(f"✅ Loaded {len(data.get('ayushman_empaneled', []))} Ayushman hospitals")
+                return data
         except FileNotFoundError:
+            print("❌ Ayushman hospitals file not found")
             return {"ayushman_empaneled": []}
+    
+    # ... rest of your existing hospital_finder.py code ...
     
     def get_mock_hospitals(self):
         """Fallback mock data"""

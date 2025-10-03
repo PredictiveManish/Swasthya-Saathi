@@ -52,5 +52,164 @@
       "reasoning": "AI analysis unavailable - defaulting to doctor consultation"
     },
     "session_id": "20251003174412"
+  },
+  {
+    "timestamp": "2025-10-03T18:27:54.586219",
+    "user_data": {
+      "phone": "",
+      "location": {
+        "lat": 28.6139,
+        "lng": 77.209
+      },
+      "ayushman_card": true
+    },
+    "symptoms": "Headache, cough,",
+    "triage_result": {
+      "severity": "OPD Visit",
+      "advice": "Please consult a healthcare provider for proper diagnosis",
+      "reasoning": "AI analysis unavailable - defaulting to doctor consultation"
+    },
+    "session_id": "20251003182754"
+  },
+  {
+    "timestamp": "2025-10-03T18:46:21.182761",
+    "user_data": {
+      "phone": "",
+      "location": {
+        "lat": 31.236677000000004,
+        "lng": 75.55450700000002
+      },
+      "ayushman_card": true
+    },
+    "symptoms": "I have fever, headache, cough from 3 days",
+    "triage_result": {
+      "severity": "OPD Visit",
+      "advice": "Please consult a healthcare provider for proper diagnosis.",
+      "reasoning": "AI analysis unavailable - defaulting to doctor consultation"
+    },
+    "session_id": "20251003184621"
+  },
+  {
+    "timestamp": "2025-10-03T21:09:55.638813",
+    "user_data": {
+      "phone": "",
+      "location": {},
+      "ayushman_card": true
+    },
+    "symptoms": "fever and headache for 2 days",
+    "triage_result": {
+      "severity": "OPD Visit",
+      "advice": "Please consult a healthcare provider for proper diagnosis.",
+      "reasoning": "AI analysis unavailable - defaulting to doctor consultation"
+    },
+    "session_id": "20251003210955"
+  },
+  {
+    "timestamp": "2025-10-03T23:34:52.157851",
+    "user_data": {
+      "phone": "",
+      "location": {
+        "lat": 31.3565,
+        "lng": 75.5611
+      },
+      "ayushman_card": true
+    },
+    "symptoms": "I have fever, cough",
+    "triage_result": {
+      "severity": "OPD Visit",
+      "advice": "Please consult a healthcare provider for proper diagnosis.",
+      "reasoning": "AI analysis unavailable - defaulting to doctor consultation"
+    },
+    "session_id": "20251003233452"
+  },
+  {
+    "timestamp": "2025-10-03T23:36:46.586191",
+    "user_data": {
+      "phone": "",
+      "location": {
+        "lat": 31.236787,
+        "lng": 75.55448066666668
+      },
+      "ayushman_card": false
+    },
+    "symptoms": "I have headache, cough",
+    "triage_result": {
+      "severity": "OPD Visit",
+      "advice": "Please consult a healthcare provider for proper diagnosis.",
+      "reasoning": "AI analysis unavailable - defaulting to doctor consultation"
+    },
+    "session_id": "20251003233646"
+  },
+  {
+    "timestamp": "2025-10-03T23:50:39.700417",
+    "user_data": {
+      "phone": "",
+      "location": {
+        "lat": 31.3565,
+        "lng": 75.5611
+      },
+      "ayushman_card": false
+    },
+    "symptoms": "I have fever",
+    "triage_result": {
+      "severity": "OPD Visit",
+      "advice": "Monitor your temperature and any other developing symptoms closely. It is recommended to consult a doctor to determine the cause of the fever and receive appropriate guidance and treatment, especially if it is high, persistent, or accompanied by other concerning signs.",
+      "reasoning": "Fever is a non-specific symptom that can indicate a range of underlying conditions, from mild viral infections to more serious bacterial or inflammatory processes. Without additional information such as temperature, duration, or accompanying symptoms, an OPD visit is the safest recommendation to ensure proper medical evaluation and diagnosis."
+    },
+    "session_id": "20251003235039"
+  },
+  {
+    "timestamp": "2025-10-04T00:36:01.685170",
+    "user_data": {
+      "phone": "",
+      "location": {
+        "lat": 31.236787,
+        "lng": 75.55448066666668
+      },
+      "ayushman_card": true
+    },
+    "symptoms": "Fever",
+    "triage_result": {
+      "severity": "OPD Visit",
+      "advice": "Monitor your temperature regularly and stay well-hydrated. If the fever persists for more than 24-48 hours, is high (e.g., above 102°F/39°C), or is accompanied by other concerning symptoms, please consult a doctor for a proper diagnosis and treatment plan.",
+      "reasoning": "Fever is a non-specific symptom that can indicate various underlying conditions, ranging from mild infections to more serious illnesses. Without additional information on its height, duration, or accompanying symptoms, an OPD visit is recommended to determine the cause and ensure appropriate management, prioritizing patient safety."
+    },
+    "session_id": "20251004003601"
+  },
+  {
+    "timestamp": "2025-10-04T00:41:39.494351",
+    "user_data": {
+      "phone": "",
+      "location": {
+        "lat": 28.6139,
+        "lng": 77.209
+      },
+      "ayushman_card": true
+    },
+    "symptoms": "Fever",
+    "triage_result": {
+      "severity": "OPD Visit",
+      "advice": "Monitor your temperature and stay well-hydrated. If the fever is high (above 102°F or 39°C), persists for more than 48 hours, or is accompanied by other concerning symptoms, please consult a doctor for evaluation.",
+      "reasoning": "Fever is a non-specific symptom that can indicate various underlying conditions, ranging from mild viral infections to more serious bacterial illnesses. Without additional information such as the fever's height, duration, or associated symptoms, an OPD visit is recommended to allow a medical professional to assess the cause and determine appropriate management, ensuring patient safety."
+    },
+    "session_id": "20251004004139"
+  },
+  {
+    "timestamp": "2025-10-04T00:50:19.860074",
+    "user_data": {
+      "phone": "",
+      "location": {
+        "lat": 30.6742,
+        "lng": 76.7104
+      },
+      "ayushman_card": false
+    },
+    "symptoms": "I have been experiencing fever and headache since morning. Also feeling body pain and weakness.",
+    "triage_result": {
+      "severity": "OPD Visit",
+      "advice": "Please consult a healthcare provider for proper diagnosis.",
+      "reasoning": "AI analysis unavailable - defaulting to doctor consultation"
+    },
+    "session_id": "20251004005019"
   }
 ]

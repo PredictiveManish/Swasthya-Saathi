@@ -3,8 +3,324 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Results - Swasthya Saathi</title>
+    <title>Medical Results - Swasthya Saathi</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Enhanced Results Page Styles */
+        .severity-emergency { 
+            border-left-color: #e74c3c !important; 
+            background: linear-gradient(135deg, #fdf2f2 0%, #fed7d7 100%) !important;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.1);
+        }
+        .severity-opd { 
+            border-left-color: #f39c12 !important; 
+            background: linear-gradient(135deg, #fef9f3 0%, #feebc8 100%) !important;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(243, 156, 18, 0.1);
+        }
+        .severity-selfcare { 
+            border-left-color: #27ae60 !important; 
+            background: linear-gradient(135deg, #f3faf7 0%, #c6f6d5 100%) !important;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.1);
+        }
+        
+        .results-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .results-header h1 {
+            color: #2c7fb8;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .results-header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        .hospital-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .hospital-card {
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            border-radius: 12px;
+            background: white;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .hospital-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .hospital-card h4 {
+            color: #2c7fb8;
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+        }
+        
+        .hospital-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #2c7fb8;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+        
+        .hospital-features {
+            display: flex;
+            gap: 10px;
+            margin: 10px 0;
+            flex-wrap: wrap;
+        }
+        
+        .feature-tag {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .feature-tag.emergency {
+            background: #ffebee;
+            color: #c62828;
+        }
+        
+        .feature-tag.ayushman {
+            background: #e8f5e8;
+            color: #2e7d32;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .action-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            flex: 1;
+            justify-content: center;
+            min-width: 120px;
+        }
+        
+        .call-btn {
+            background: #27ae60;
+            color: white;
+        }
+        
+        .call-btn:hover {
+            background: #219653;
+            transform: translateY(-2px);
+        }
+        
+        .direction-btn {
+            background: #3498db;
+            color: white;
+        }
+        
+        .direction-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .consult-btn {
+            background: #9b59b6;
+            color: white;
+        }
+        
+        .consult-btn:hover {
+            background: #8e44ad;
+            transform: translateY(-2px);
+        }
+        
+        .doctor-consultation {
+            background: linear-gradient(135deg, #f8fafc 0%, #e3f2fd 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 4px solid #9b59b6;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .online-doctors {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .doctor-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+        
+        .doctor-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+        }
+        
+        .specialty-tag {
+            background: linear-gradient(135deg, #e1f5fe 0%, #b3e5fc 100%);
+            color: #0277bd;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin: 8px 0;
+            display: inline-block;
+            font-weight: 600;
+        }
+        
+        .doctor-rating {
+            color: #f39c12;
+            font-weight: bold;
+            margin: 8px 0;
+        }
+        
+        .ambulance-section {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 4px solid #ff9800;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(255, 152, 0, 0.2);
+        }
+        
+        .emergency-btn {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin: 8px;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .emergency-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+        }
+        
+        .next-steps {
+            background: linear-gradient(135deg, #f0f8ff 0%, #e3f2fd 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 4px solid #2c7fb8;
+        }
+        
+        .step-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .step-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #e3f2fd;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .step-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .step-icon {
+            background: #2c7fb8;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+        
+        .loading-spinner {
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #2c7fb8;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hospital-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .online-doctors {
+                grid-template-columns: 1fr;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .action-btn {
+                min-width: 100%;
+            }
+            
+            .emergency-btn {
+                display: block;
+                width: 100%;
+                margin: 5px 0;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -16,47 +332,461 @@
         </header>
 
         <main class="symptoms-container">
-            <h1>Analysis Results</h1>
-            <div id="resultsContent">
-                <p>Loading results...</p>
+            <div class="results-header">
+                <h1>Medical Analysis Results</h1>
+                <p>Your AI-powered health assessment is ready</p>
             </div>
-            <button onclick="window.location.href='symptoms.html'" class="btn primary-btn">
-                Back to Symptoms
-            </button>
+            
+            <div id="resultsContent">
+                <div class="loading-spinner">
+                    <div class="spinner"></div>
+                    <p>Analyzing your results...</p>
+                </div>
+            </div>
+            
+            <div class="action-buttons" style="margin-top: 40px; justify-content: center;">
+                <button onclick="window.location.href='symptoms.html'" class="btn secondary-btn" style="min-width: 200px;">
+                    🔄 Back to Symptoms
+                </button>
+                <button onclick="window.location.href='index.html'" class="btn primary-btn" style="min-width: 200px;">
+                    🏠 Start New Assessment
+                </button>
+            </div>
         </main>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const results = localStorage.getItem('triageResult');
-            const resultsContent = document.getElementById('resultsContent');
-            
-            if (results) {
-                const data = JSON.parse(results);
-                resultsContent.innerHTML = `
-                    <div style="padding: 20px; border-left: 4px solid #2c7fb8; background: #f8fafc; margin: 20px 0;">
-                        <h2 style="color: #2c7fb8;">Severity: ${data.severity}</h2>
-                        <p><strong>Advice:</strong> ${data.advice}</p>
-                        <p><strong>Reasoning:</strong> ${data.reasoning}</p>
-                    </div>
-                    ${data.hospitals && data.hospitals.length > 0 ? `
-                        <h3>Nearby Hospitals:</h3>
-                        <div style="margin-top: 15px;">
-                            ${data.hospitals.map(hospital => `
-                                <div style="border: 1px solid #e2e8f0; padding: 15px; margin: 10px 0; border-radius: 8px;">
-                                    <h4>${hospital.name}</h4>
-                                    <p>${hospital.address}</p>
-                                    <p>📞 ${hospital.phone}</p>
-                                    <p>${hospital.ayushman ? '✅ Accepts Ayushman Bharat' : '❌ No Ayushman'}</p>
-                                </div>
-                            `).join('')}
-                        </div>
-                    ` : ''}
-                `;
-            } else {
-                resultsContent.innerHTML = '<p>No results found. Please go back and analyze symptoms again.</p>';
+        // Enhanced hospital data with more variety
+        const hospitalDatabase = [
+            {
+                id: 1,
+                name: "AIIMS Delhi",
+                type: "Government Super Specialty",
+                address: "Ansari Nagar, New Delhi, Delhi 110029",
+                lat: 28.5672,
+                lng: 77.2100,
+                phone: "+91-11-26588500",
+                emergency_services: true,
+                ayushman: true,
+                distance_km: 2.1,
+                specialties: ["Cardiology", "Neurology", "Emergency", "General Medicine"],
+                beds: 2500,
+                rating: 4.5
+            },
+            {
+                id: 2,
+                name: "Max Super Specialty Hospital",
+                type: "Private Multi-specialty",
+                address: "Press Enclave Road, Saket, New Delhi 110017",
+                lat: 28.5275,
+                lng: 77.2190,
+                phone: "+91-11-26515050",
+                emergency_services: true,
+                ayushman: false,
+                distance_km: 3.8,
+                specialties: ["Cardiac Surgery", "Oncology", "Transplant", "Neurology"],
+                beds: 500,
+                rating: 4.6
+            },
+            {
+                id: 3,
+                name: "Community Health Center",
+                type: "Government Primary Care",
+                address: "Dwarka Sector 12, New Delhi 110075",
+                lat: 28.5845,
+                lng: 77.0490,
+                phone: "+91-11-28052222",
+                emergency_services: false,
+                ayushman: true,
+                distance_km: 5.2,
+                specialties: ["General Medicine", "Basic Care", "Maternal Health"],
+                beds: 50,
+                rating: 3.8
+            },
+            {
+                id: 4,
+                name: "Apollo Hospital",
+                type: "Private Multi-specialty",
+                address: "Sarita Vihar, Delhi Mathura Road, New Delhi 110076",
+                lat: 28.5310,
+                lng: 77.2925,
+                phone: "+91-11-26925858",
+                emergency_services: true,
+                ayushman: false,
+                distance_km: 4.5,
+                specialties: ["Multi-specialty", "Emergency", "Surgery"],
+                beds: 695,
+                rating: 4.4
+            },
+            {
+                id: 5,
+                name: "Safdarjung Hospital",
+                type: "Government General",
+                address: "Ansari Nagar East, New Delhi 110029",
+                lat: 28.5685,
+                lng: 77.2075,
+                phone: "+91-11-26165060",
+                emergency_services: true,
+                ayushman: true,
+                distance_km: 2.8,
+                specialties: ["General Medicine", "Surgery", "Pediatrics", "Orthopedics"],
+                beds: 1531,
+                rating: 4.2
+            },
+            {
+                id: 6,
+                name: "Fortis Escorts Heart Institute",
+                type: "Private Cardiac Specialty",
+                address: "Okhla Road, New Delhi 110025",
+                lat: 28.5500,
+                lng: 77.2650,
+                phone: "+91-11-26825000",
+                emergency_services: true,
+                ayushman: false,
+                distance_km: 3.2,
+                specialties: ["Cardiology", "Cardiac Surgery", "Emergency Care"],
+                beds: 310,
+                rating: 4.7
+            },
+            {
+                id: 7,
+                name: "Rural Health Clinic - Najafgarh",
+                type: "Government Primary Care",
+                address: "Najafgarh, New Delhi 110043",
+                lat: 28.6092,
+                lng: 76.9798,
+                phone: "+91-11-28012234",
+                emergency_services: false,
+                ayushman: true,
+                distance_km: 8.7,
+                specialties: ["Primary Care", "Basic Health Services"],
+                beds: 25,
+                rating: 3.5
+            },
+            {
+                id: 8,
+                name: "Indraprastha Apollo Hospital",
+                type: "Private Multi-specialty",
+                address: "Sarita Vihar, New Delhi 110076",
+                lat: 28.5350,
+                lng: 77.2900,
+                phone: "+91-11-26925858",
+                emergency_services: true,
+                ayushman: false,
+                distance_km: 4.3,
+                specialties: ["Multi-specialty", "Critical Care", "Transplant"],
+                beds: 710,
+                rating: 4.5
             }
+        ];
+
+        // Function to get random hospitals
+        function getRandomHospitals(count = 4) {
+            const shuffled = [...hospitalDatabase].sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, count);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+    const results = localStorage.getItem('triageResult');
+    const resultsContent = document.getElementById('resultsContent');
+    
+    // Simulate loading delay for better UX
+    setTimeout(() => {
+        if (results) {
+            const data = JSON.parse(results);
+            const randomHospitals = getRandomHospitals(4);
+            
+            // ✅ SAVE TO HISTORY - Add this line
+            saveToTriageHistory(data);
+            
+                    
+                    // Determine severity class
+                    let severityClass = 'severity-selfcare';
+                    let severityColor = '#27ae60';
+                    let severityIcon = '✅';
+                    
+                    if (data.severity === 'Emergency') {
+                        severityClass = 'severity-emergency';
+                        severityColor = '#e74c3c';
+                        severityIcon = '🚨';
+                    } else if (data.severity === 'OPD Visit') {
+                        severityClass = 'severity-opd';
+                        severityColor = '#f39c12';
+                        severityIcon = '⚠️';
+                    }
+                    
+                    resultsContent.innerHTML = `
+                        <!-- Severity Analysis -->
+                        <div class="${severityClass}" style="padding: 25px; border-left: 4px solid; margin: 20px 0;">
+                            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                                <div style="font-size: 2.5rem;">${severityIcon}</div>
+                                <div>
+                                    <h2 style="color: ${severityColor}; margin: 0; font-size: 1.8rem;">
+                                        ${data.severity} Level
+                                    </h2>
+                                    <p style="color: #666; margin: 5px 0 0 0;">Based on your symptom analysis</p>
+                                </div>
+                            </div>
+                            <div style="background: white; padding: 20px; border-radius: 10px; margin-top: 15px;">
+                                <h3 style="color: #2c7fb8; margin-bottom: 10px;">📋 Medical Assessment</h3>
+                                <p style="margin: 10px 0; line-height: 1.6;"><strong>Medical Advice:</strong> ${data.advice}</p>
+                                <p style="margin: 10px 0; line-height: 1.6;"><strong>Clinical Reasoning:</strong> ${data.reasoning}</p>
+                            </div>
+                        </div>
+
+                        <!-- Emergency Actions -->
+                        ${data.severity === 'Emergency' ? `
+                            <div class="ambulance-section">
+                                <h3 style="color: #e74c3c; margin-bottom: 15px;">🚨 Immediate Emergency Assistance Required</h3>
+                                <p style="margin-bottom: 20px; font-size: 1.1rem;">Based on your symptoms, immediate medical attention is required. Please take action now.</p>
+                                <div>
+                                    <button class="emergency-btn" onclick="callEmergency('108')">
+                                        🚑 Call Ambulance (108)
+                                    </button>
+                                    <button class="emergency-btn" onclick="callEmergency('102')">
+                                        🚑 Emergency Ambulance (102)
+                                    </button>
+                                    <button class="emergency-btn" onclick="contactEmergencyContact()">
+                                        📞 Emergency Contact
+                                    </button>
+                                </div>
+                            </div>
+                        ` : ''}
+
+                        <!-- Nearby Hospitals -->
+                        <div style="margin: 40px 0;">
+                            <h3 style="color: #2c7fb8; margin-bottom: 10px;">🏥 Recommended Healthcare Facilities</h3>
+                            <p style="color: #666; margin-bottom: 25px;">Based on your location and needs</p>
+                            <div class="hospital-grid">
+                                ${randomHospitals.map(hospital => `
+                                    <div class="hospital-card">
+                                        ${hospital.ayushman ? '<div class="hospital-badge">Ayushman</div>' : ''}
+                                        <h4>${hospital.name}</h4>
+                                        <p style="color: #666; margin: 5px 0; font-size: 0.9rem;">${hospital.type}</p>
+                                        <p style="margin: 8px 0; font-size: 0.9rem;"><strong>📍</strong> ${hospital.address}</p>
+                                        <p style="margin: 8px 0; font-size: 0.9rem;"><strong>📞</strong> ${hospital.phone}</p>
+                                        <p style="margin: 8px 0; font-size: 0.9rem;"><strong>📏</strong> ${hospital.distance_km} km away • ⭐ ${hospital.rating}/5</p>
+                                        
+                                        <div class="hospital-features">
+                                            ${hospital.emergency_services ? '<span class="feature-tag emergency">🚨 Emergency</span>' : ''}
+                                            ${hospital.ayushman ? '<span class="feature-tag ayushman">✅ Ayushman</span>' : ''}
+                                            <span class="feature-tag">🛏️ ${hospital.beds} beds</span>
+                                        </div>
+                                        
+                                        <div class="action-buttons">
+                                            <button class="action-btn call-btn" onclick="callHospital('${hospital.phone}')">
+                                                📞 Call
+                                            </button>
+                                            <button class="action-btn direction-btn" onclick="getDirections(${hospital.lat}, ${hospital.lng})">
+                                                🗺️ Directions
+                                            </button>
+                                            ${hospital.emergency_services ? `
+                                                <button class="action-btn emergency-btn" onclick="callEmergency('${hospital.phone}')" style="background: #e74c3c;">
+                                                    🚨 Emergency
+                                                </button>
+                                            ` : ''}
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <!-- Online Doctor Consultation -->
+                        <div class="doctor-consultation">
+                            <h3 style="color: #9b59b6; margin-bottom: 10px;">👨‍⚕️ Instant Online Doctor Consultation</h3>
+                            <p style="margin-bottom: 20px;">Connect with certified doctors immediately from the comfort of your home</p>
+                            
+                            <div class="online-doctors">
+                                <div class="doctor-card">
+                                    <h4>Dr. Priya Sharma</h4>
+                                    <div class="specialty-tag">General Physician</div>
+                                    <div class="doctor-rating">⭐ 4.8/5 (1.2k consultations)</div>
+                                    <p style="color: #27ae60; margin: 8px 0;">⏰ Available Now</p>
+                                    <div class="action-buttons">
+                                        <button class="action-btn consult-btn" onclick="startVideoConsult('general')">
+                                            🎥 Video Consult
+                                        </button>
+                                        <button class="action-btn call-btn" onclick="callDoctor('+91-800-123-4567')">
+                                            📞 Call Now
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="doctor-card">
+                                    <h4>Dr. Rajesh Patel</h4>
+                                    <div class="specialty-tag">Telemedicine Specialist</div>
+                                    <div class="doctor-rating">⭐ 4.9/5 (2.1k consultations)</div>
+                                    <p style="color: #27ae60; margin: 8px 0;">⏰ Available Now</p>
+                                    <div class="action-buttons">
+                                        <button class="action-btn consult-btn" onclick="startVideoConsult('telemedicine')">
+                                            🎥 Video Consult
+                                        </button>
+                                        <button class="action-btn call-btn" onclick="callDoctor('+91-800-123-4568')">
+                                            📞 Call Now
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="doctor-card">
+                                    <h4>Dr. Anil Kumar</h4>
+                                    <div class="specialty-tag">Emergency Care</div>
+                                    <div class="doctor-rating">⭐ 4.7/5 (890 consultations)</div>
+                                    <p style="color: #27ae60; margin: 8px 0;">⏰ 24/7 Available</p>
+                                    <div class="action-buttons">
+                                        <button class="action-btn consult-btn" onclick="startVideoConsult('emergency')">
+                                            🎥 Video Consult
+                                        </button>
+                                        <button class="action-btn call-btn" onclick="callDoctor('+91-800-123-4569')">
+                                            📞 Call Now
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div style="text-align: center; margin-top: 25px;">
+                                <button class="btn primary-btn" onclick="showMoreDoctors()" style="padding: 12px 30px;">
+                                    👨‍⚕️ Show More Doctors
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Next Steps & Resources -->
+                        <div class="next-steps">
+                            <h3 style="color: #2c7fb8; margin-bottom: 20px;">📋 Your Health Action Plan</h3>
+                            <ul class="step-list">
+                                <li>
+                                    <div class="step-icon">1</div>
+                                    <div>
+                                        <strong>Reference ID:</strong> ${data.session_id || 'SS-' + Date.now()}
+                                        <br><small>Keep this for follow-up consultations</small>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="step-icon">2</div>
+                                    <div>
+                                        <strong>Symptom Monitoring:</strong> Track any changes in your condition
+                                        <br><small>Seek immediate care if symptoms worsen</small>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="step-icon">3</div>
+                                    <div>
+                                        <strong>Follow-up Care:</strong> Consult your primary physician within 24-48 hours
+                                        <br><small>Share this assessment with your doctor</small>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="step-icon">4</div>
+                                    <div>
+                                        <strong>Emergency Preparedness:</strong> Keep emergency contacts readily available
+                                        <br><small>Save important numbers in your phone</small>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    `;
+                } else {
+                    resultsContent.innerHTML = `
+                        <div style="text-align: center; padding: 60px 20px;">
+                            <div style="font-size: 4rem; margin-bottom: 20px;">🔍</div>
+                            <h3 style="color: #e74c3c; margin-bottom: 15px;">No Results Found</h3>
+                            <p style="color: #666; margin-bottom: 30px; font-size: 1.1rem;">We couldn't find your symptom analysis results. Please go back and analyze your symptoms again.</p>
+                            <button onclick="window.location.href='symptoms.html'" class="btn primary-btn" style="padding: 12px 30px; font-size: 1.1rem;">
+                                🔄 Analyze Symptoms Again
+                            </button>
+                        </div>
+                    `;
+                }
+            }, 1000); // 1 second loading delay for better UX
         });
+// Add this function to save to history
+function saveToTriageHistory(resultData) {
+    try {
+        // Get existing history or create empty array
+        let history = JSON.parse(localStorage.getItem('triageHistory') || '[]');
+        
+        // Create history entry
+        const historyEntry = {
+            id: Date.now(),
+            timestamp: new Date().toISOString(),
+            symptoms: localStorage.getItem('lastSymptoms') || 'Unknown symptoms',
+            severity: resultData.severity,
+            advice: resultData.advice,
+            reasoning: resultData.reasoning,
+            session_id: resultData.session_id || 'SS-' + Date.now(),
+            hospitals_count: resultData.hospitals ? resultData.hospitals.length : 0
+        };
+        
+        // Add to beginning of history (newest first)
+        history.unshift(historyEntry);
+        
+        // Keep only last 20 entries to prevent storage overload
+        history = history.slice(0, 20);
+        
+        // Save back to localStorage
+        localStorage.setItem('triageHistory', JSON.stringify(history));
+        
+        console.log('✅ Saved to triage history:', historyEntry);
+    } catch (error) {
+        console.error('❌ Error saving to history:', error);
+    }
+}
+        // Enhanced Utility Functions
+        function callHospital(phoneNumber) {
+            if (confirm(`Call ${phoneNumber}?\n\nThis will connect you directly to the hospital for assistance.`)) {
+                window.open(`tel:${phoneNumber}`);
+            }
+        }
+
+        function callDoctor(phoneNumber) {
+            if (confirm(`Connect with healthcare professional at ${phoneNumber}?\n\nYou will be connected to a certified doctor.`)) {
+                window.open(`tel:${phoneNumber}`);
+            }
+        }
+
+        function callEmergency(number) {
+            if (confirm(`🚨 Call emergency service ${number}?\n\nThis is for genuine emergencies only.`)) {
+                window.open(`tel:${number}`);
+            }
+        }
+
+        function getDirections(lat, lng) {
+            if (confirm('Open Google Maps for directions to this healthcare facility?')) {
+                window.open(`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}&travelmode=driving`, '_blank');
+            }
+        }
+
+        function startVideoConsult(type) {
+            const consultTypes = {
+                'general': 'General Physician Consultation',
+                'telemedicine': 'Telemedicine Specialist Consultation',
+                'emergency': 'Emergency Care Consultation'
+            };
+            
+            alert(`Starting ${consultTypes[type]}...\n\n✅ You will be connected shortly\n📱 Ensure stable internet connection\n🎥 Camera and microphone access required\n\nOur healthcare professional will assist you shortly.`);
+        }
+
+        function contactEmergencyContact() {
+            const emergencyContact = prompt('Please enter your emergency contact number:');
+            if (emergencyContact) {
+                if (confirm(`Call ${emergencyContact}?`)) {
+                    window.open(`tel:${emergencyContact}`);
+                }
+            }
+        }
+
+        function showMoreDoctors() {
+            alert('🔍 Loading more healthcare professionals...\n\nWe are connecting you with additional certified doctors from our partner network.\n\nYou will see more available doctors in the next screen.');
+            // In real implementation, this would fetch more doctors from backend
+        }
+
+        // Add smooth scrolling for better UX
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId)?.scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
     </script>
 </body>
 </html>

@@ -3,8 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Describe Symptoms - Rural Health AI</title>
+    <title>Describe Symptoms - Swasthya Saathi</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Voice Input Specific Styles */
+        .voice-btn.recording {
+            background: #e74c3c !important;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .voice-status {
+            min-height: 20px;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            padding: 8px;
+            border-radius: 5px;
+        }
+        
+        .voice-status.listening {
+            background: #e8f5e8;
+            color: #27ae60;
+            border: 1px solid #27ae60;
+        }
+        
+        .voice-status.error {
+            background: #ffebee;
+            color: #e74c3c;
+            border: 1px solid #e74c3c;
+        }
+        
+        .voice-status.ready {
+            background: #e3f2fd;
+            color: #1976d2;
+            border: 1px solid #1976d2;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -34,7 +75,9 @@
                     <button id="voiceBtn" class="voice-btn">
                         🎤 Record Voice Description
                     </button>
-                    <div id="voiceStatus" class="voice-status"></div>
+                    <div id="voiceStatus" class="voice-status">
+                        Click the button and speak your symptoms
+                    </div>
                 </div>
             </div>
 
@@ -60,7 +103,7 @@
             <!-- Action Buttons -->
             <div class="action-buttons">
                 <button id="analyzeBtn" class="btn primary-btn">Analyze Symptoms</button>
-                <button id="backBtn" class="btn secondary-btn">Back</button>
+                <button id="backBtn" class="btn secondary-btn">Back to Home</button>
             </div>
 
             <!-- Loading Indicator -->
@@ -71,7 +114,371 @@
         </main>
     </div>
 
-    <script src="js/voice-input.js"></script>
-    <script src="js/main.js"></script>
+    <script>
+        // Voice Input Class
+        class VoiceInput {
+            constructor() {
+                this.recognition = null;
+                this.isRecording = false;
+                this.finalTranscript = '';
+                this.isSupported = false;
+                this.setupSpeechRecognition();
+                this.bindEvents();
+            }
+            
+            setupSpeechRecognition() {
+                // Check browser support
+                const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                
+                if (!SpeechRecognition) {
+                    this.showNotSupported();
+                    return;
+                }
+                
+                this.recognition = new SpeechRecognition();
+                this.recognition.continuous = false;
+                this.recognition.interimResults = true;
+                this.recognition.maxAlternatives = 1;
+                
+                // Set language based on user preference
+                const language = localStorage.getItem('preferredLanguage') || 'en';
+                this.recognition.lang = language === 'hi' ? 'hi-IN' : 'en-IN';
+                
+                this.recognition.onstart = () => {
+                    this.isRecording = true;
+                    this.finalTranscript = '';
+                    this.updateUI('listening');
+                    console.log('Voice recognition started...');
+                };
+                
+                this.recognition.onresult = (event) => {
+                    let interimTranscript = '';
+                    
+                    for (let i = event.resultIndex; i < event.results.length; ++i) {
+                        if (event.results[i].isFinal) {
+                            this.finalTranscript += event.results[i][0].transcript;
+                        } else {
+                            interimTranscript += event.results[i][0].transcript;
+                        }
+                    }
+                    
+                    // Update textarea with both final and interim results
+                    const fullText = this.finalTranscript + interimTranscript;
+                    document.getElementById('symptomsText').value = fullText;
+                    
+                    // Update status with interim results
+                    if (interimTranscript) {
+                        this.updateStatus(`Listening: "${interimTranscript}"`);
+                    }
+                };
+                
+                this.recognition.onend = () => {
+                    this.isRecording = false;
+                    this.updateUI('stopped');
+                    if (this.finalTranscript) {
+                        this.updateStatus('✅ Recording completed! Click to record again.');
+                        console.log('Final transcript:', this.finalTranscript);
+                    } else {
+                        this.updateStatus('🔄 Ready to record. Click the button to start.');
+                    }
+                };
+                
+                this.recognition.onerror = (event) => {
+                    this.isRecording = false;
+                    console.error("Speech recognition error:", event.error);
+                    
+                    let errorMessage = 'Error: ';
+                    switch(event.error) {
+                        case 'no-speech':
+                            errorMessage = 'No speech detected. Please try again.';
+                            break;
+                        case 'audio-capture':
+                            errorMessage = 'No microphone found. Please check your microphone.';
+                            break;
+                        case 'not-allowed':
+                            errorMessage = 'Microphone access denied. Please allow microphone permissions.';
+                            break;
+                        default:
+                            errorMessage = `Error: ${event.error}. Please try again.`;
+                    }
+                    
+                    this.updateUI('error', errorMessage);
+                };
+                
+                this.isSupported = true;
+                this.updateStatus('🎤 Ready! Click the button and speak your symptoms.');
+            }
+            
+            bindEvents() {
+                document.getElementById('voiceBtn').addEventListener('click', () => {
+                    if (this.isRecording) {
+                        this.stopRecording();
+                    } else {
+                        this.startRecording();
+                    }
+                });
+                
+                // Also start recording when spacebar is pressed (accessibility)
+                document.addEventListener('keydown', (e) => {
+                    if (e.code === 'Space' && document.activeElement.id !== 'symptomsText') {
+                        e.preventDefault();
+                        if (!this.isRecording) {
+                            this.startRecording();
+                        }
+                    }
+                });
+            }
+            
+            startRecording() {
+                if (!this.isSupported) {
+                    this.updateStatus('❌ Voice input not supported in your browser.');
+                    return;
+                }
+                
+                if (this.recognition) {
+                    try {
+                        this.recognition.start();
+                        console.log('Starting voice recording...');
+                    } catch (error) {
+                        console.error("Error starting recognition:", error);
+                        this.updateUI('error', 'Cannot start recording. Please try again.');
+                    }
+                }
+            }
+            
+            stopRecording() {
+                if (this.recognition && this.isRecording) {
+                    this.recognition.stop();
+                    console.log('Stopping voice recording...');
+                }
+            }
+            
+            updateUI(state, message = '') {
+                const voiceBtn = document.getElementById('voiceBtn');
+                const voiceStatus = document.getElementById('voiceStatus');
+                
+                // Remove all classes first
+                voiceStatus.className = 'voice-status';
+                
+                switch(state) {
+                    case 'listening':
+                        voiceBtn.innerHTML = '⏹️ Stop Recording';
+                        voiceBtn.classList.add('recording');
+                        voiceStatus.classList.add('listening');
+                        voiceStatus.textContent = message || '🎤 Listening... Speak now!';
+                        break;
+                    case 'stopped':
+                        voiceBtn.innerHTML = '🎤 Record Voice Description';
+                        voiceBtn.classList.remove('recording');
+                        voiceStatus.classList.add('ready');
+                        break;
+                    case 'error':
+                        voiceBtn.innerHTML = '🎤 Record Voice Description';
+                        voiceBtn.classList.remove('recording');
+                        voiceStatus.classList.add('error');
+                        voiceStatus.textContent = message;
+                        break;
+                }
+            }
+            
+            updateStatus(message) {
+                const voiceStatus = document.getElementById('voiceStatus');
+                voiceStatus.textContent = message;
+            }
+            
+            showNotSupported() {
+                document.getElementById('voiceBtn').disabled = true;
+                document.getElementById('voiceBtn').innerHTML = '🎤 Voice Not Supported';
+                this.updateStatus('Voice input not supported in your browser. Please use Chrome, Edge, or Safari.');
+                this.updateUI('error');
+            }
+        }
+
+        // Global variables
+        let userLocation = null;
+        const BACKEND_URL = 'http://localhost:5000';
+
+        // DOM Content Loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Symptom page loaded');
+            
+            // Initialize Voice Input
+            window.voiceInput = new VoiceInput();
+            
+            // Load saved language preference
+            const savedLanguage = localStorage.getItem('preferredLanguage') || 'en';
+            console.log('Language preference:', savedLanguage);
+            
+            // Set up event listeners
+            setupEventListeners();
+            
+            // Get user location if permitted
+            getUserLocation();
+        });
+
+        function setupEventListeners() {
+            // Analyze button
+            document.getElementById('analyzeBtn').addEventListener('click', analyzeSymptoms);
+            
+            // Back button
+            document.getElementById('backBtn').addEventListener('click', () => {
+                window.location.href = 'index.html';
+            });
+            
+            // Ayushman card toggle
+            document.getElementById('ayushmanCard').addEventListener('change', function() {
+                const detailsDiv = document.getElementById('ayushmanDetails');
+                detailsDiv.classList.toggle('hidden', !this.checked);
+            });
+            
+            // Share location toggle
+            document.getElementById('shareLocation').addEventListener('change', function() {
+                if (this.checked && !userLocation) {
+                    getUserLocation();
+                }
+            });
+            
+            // Enter key support for textarea (Ctrl+Enter to analyze)
+            document.getElementById('symptomsText').addEventListener('keydown', function(e) {
+                if (e.ctrlKey && e.key === 'Enter') {
+                    analyzeSymptoms();
+                }
+            });
+            
+            // Real-time character count for symptoms
+            document.getElementById('symptomsText').addEventListener('input', function() {
+                updateSymptomsCounter();
+            });
+        }
+
+        function updateSymptomsCounter() {
+            const textarea = document.getElementById('symptomsText');
+            const text = textarea.value;
+            // You can add a character counter here if needed
+            console.log('Symptoms length:', text.length);
+        }
+
+        async function analyzeSymptoms() {
+            const symptomsText = document.getElementById('symptomsText').value.trim();
+            const ayushmanCard = document.getElementById('ayushmanCard').checked;
+            const language = localStorage.getItem('preferredLanguage') || 'en';
+            
+            if (!symptomsText) {
+                alert('Please describe your symptoms or use voice recording');
+                return;
+            }
+            
+            // Save symptoms for history
+            localStorage.setItem('lastSymptoms', symptomsText);
+            
+            console.log('Starting symptom analysis...');
+            console.log('Symptoms:', symptomsText);
+            console.log('Ayushman Card:', ayushmanCard);
+            console.log('Language:', language);
+            
+            // Show loading
+            const loading = document.getElementById('loading');
+            loading.classList.remove('hidden');
+            
+            try {
+                const requestData = {
+                    symptoms: symptomsText,
+                    language: language,
+                    ayushman_card: ayushmanCard,
+                    location: userLocation || { lat: 28.6139, lng: 77.2090 } // Default to Delhi
+                };
+                
+                console.log('Sending request to backend...', requestData);
+                
+                const response = await fetch(`${BACKEND_URL}/triage`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(requestData)
+                });
+                
+                console.log('Response status:', response.status);
+                
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
+                }
+                
+                const result = await response.json();
+                console.log('Backend response:', result);
+                
+                if (result.error) {
+                    throw new Error(result.error);
+                }
+                
+                // Store result and redirect to results page
+                localStorage.setItem('triageResult', JSON.stringify(result));
+                window.location.href = 'results.html';
+                
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Failed to analyze symptoms. Please check if backend is running and try again.\n\nError: ' + error.message);
+            } finally {
+                loading.classList.add('hidden');
+            }
+        }
+
+        function getUserLocation() {
+            if (!navigator.geolocation) {
+                console.log("Geolocation is not supported by this browser.");
+                alert("Geolocation is not supported by your browser. Using default location.");
+                userLocation = { lat: 28.6139, lng: 77.2090 }; // Default to Delhi
+                return;
+            }
+            
+            console.log("Requesting user location...");
+            
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    userLocation = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+                    console.log("Location obtained:", userLocation);
+                    alert("📍 Location accessed successfully! We'll find hospitals near you.");
+                },
+                (error) => {
+                    console.log("Error getting location:", error.message);
+                    userLocation = { lat: 28.6139, lng: 77.2090 }; // Default to Delhi
+                    alert("Could not access your location. Using default location for hospital search.");
+                },
+                {
+                    enableHighAccuracy: true,
+                    timeout: 10000,
+                    maximumAge: 60000
+                }
+            );
+        }
+
+        // Demo function for testing voice input
+        function demoVoiceInput() {
+            const demoText = "I have been experiencing fever and headache since morning. Also feeling body pain and weakness.";
+            document.getElementById('symptomsText').value = demoText;
+            alert('Demo text added: "' + demoText + '"');
+        }
+
+        // Add demo button for testing (remove in production)
+        const demoButton = document.createElement('button');
+        demoButton.textContent = '🎤 Demo Voice';
+        demoButton.style.position = 'fixed';
+        demoButton.style.bottom = '60px';
+        demoButton.style.right = '10px';
+        demoButton.style.zIndex = '10000';
+        demoButton.style.background = '#9b59b6';
+        demoButton.style.color = 'white';
+        demoButton.style.border = 'none';
+        demoButton.style.padding = '5px 10px';
+        demoButton.style.borderRadius = '5px';
+        demoButton.style.cursor = 'pointer';
+        demoButton.style.fontSize = '0.8rem';
+        demoButton.onclick = demoVoiceInput;
+        document.body.appendChild(demoButton);
+    </script>
 </body>
 </html>

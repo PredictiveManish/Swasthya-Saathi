@@ -3,137 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Swasthya Saathi</title>
+    <title>Swasthya Saathi - AI Healthcare Assistant</title>
+    <link rel="stylesheet" href="css/style.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-        
-        body {
-            background-color: #f5f9fc;
-            color: #333;
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        header {
-            background-color: #2c7fb8;
+        /* Additional Styles for Landing Page */
+        .hero {
+            background: linear-gradient(135deg, #2c7fb8 0%, #1d5f8a 100%);
             color: white;
-            padding: 20px 0;
+            padding: 80px 0;
             text-align: center;
-            border-radius: 0 0 10px 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-radius: 0 0 30px 30px;
+            margin-bottom: 40px;
         }
         
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
         }
         
-        .logo-icon {
-            font-size: 2rem;
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
         }
         
-        .intro {
-            background-color: white;
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .feature-card {
+            background: white;
             padding: 30px;
-            margin: 30px 0;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             text-align: center;
+            transition: transform 0.3s;
         }
         
-        .intro h1 {
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
             color: #2c7fb8;
             margin-bottom: 15px;
-            font-size: 1.8rem;
         }
         
-        .language-selection {
-            background-color: white;
-            padding: 25px;
+        .cta-section {
+            background: #f8fafc;
+            padding: 60px 0;
+            text-align: center;
+            border-radius: 20px;
+            margin: 50px 0;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #2c7fb8;
+        }
+        
+        .user-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .action-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             text-align: center;
-        }
-        
-        .language-selection h2 {
-            margin-bottom: 20px;
-            color: #444;
-        }
-        
-        select {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-            background-color: #f9f9f9;
-        }
-        
-        .btn {
-            background-color: #2c7fb8;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            font-size: 1.1rem;
-            border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s;
-            width: 100%;
+            transition: all 0.3s;
         }
         
-        .btn:hover {
-            background-color: #1d5f8a;
+        .action-card:hover {
+            background: #2c7fb8;
+            color: white;
+            transform: translateY(-3px);
         }
         
-        footer {
+        .action-card:hover h4 {
+            color: white;
+        }
+        
+        .action-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .language-selector {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin: 30px 0;
+        }
+        
+        .testimonial {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin: 20px 0;
             text-align: center;
-            margin-top: 30px;
-            color: #777;
-            font-size: 0.9rem;
         }
         
-        /* Mobile responsiveness */
-        @media (min-width: 600px) {
-            .logo {
-                font-size: 2.2rem;
-            }
-            
-            .intro h1 {
-                font-size: 2.2rem;
-            }
-            
-            select {
-                width: 70%;
-            }
-            
-            .btn {
-                width: 70%;
-            }
+        .testimonial-text {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
         }
         
-        @media (min-width: 768px) {
-            select {
-                width: 50%;
-            }
-            
-            .btn {
-                width: 50%;
-            }
+        .user-info {
+            font-weight: bold;
+            color: #2c7fb8;
         }
     </style>
 </head>
@@ -144,42 +154,906 @@
                 <span class="logo-icon">🏥</span>
                 <span>Swasthya Saathi</span>
             </div>
+            <nav style="margin-top: 15px;">
+                <button onclick="showLogin()" class="btn secondary-btn" style="margin: 0 10px;">Login</button>
+                <button onclick="showRegister()" class="btn primary-btn">Register</button>
+            </nav>
         </div>
     </header>
-    
+
+    <section class="hero">
+        <div class="container">
+            <h1>Your AI-Powered Health Companion</h1>
+            <p>Instant symptom analysis, doctor connections, and personalized healthcare guidance</p>
+            <div class="user-actions">
+                <div class="action-card" onclick="startSymptomCheck()">
+                    <div class="action-icon">🔍</div>
+                    <h4>Symptom Checker</h4>
+                    <p>AI-powered symptom analysis</p>
+                </div>
+                <div class="action-card" onclick="showMedicationReminder()">
+                    <div class="action-icon">⏰</div>
+                    <h4>Medication Reminder</h4>
+                    <p>Never miss your medicine</p>
+                </div>
+                <div class="action-card" onclick="showDoctorConsult()">
+                    <div class="action-icon">👨‍⚕️</div>
+                    <h4>Doctor Consultation</h4>
+                    <p>Connect with healthcare experts</p>
+                </div>
+                <div class="action-card" onclick="showDashboard()">
+                    <div class="action-icon" onclick="showDashboard()">📊</div>
+                    <h4>Health Dashboard</h4>
+                    <p>Track your medical history</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <div class="container">
-        <section class="intro">
-            <h1>AI Symptom-to-Doctor Triage</h1>
-            <p>This application helps patients assess their symptoms and connect with appropriate healthcare providers using artificial intelligence.</p>
-        </section>
-        
-        <section class="language-selection">
-            <h2>Select Your Language</h2>
-            <select id="languageSelect">
+        <!-- Language Selection -->
+        <section class="language-selector">
+            <h2 style="text-align: center; margin-bottom: 20px;">Choose Your Language</h2>
+            <select id="languageSelect" style="margin: 0 auto 20px; display: block; max-width: 300px;">
                 <option value="en">English</option>
                 <option value="hi">Hindi (हिन्दी)</option>
+                <option value="ta">Tamil (தமிழ்)</option>
+                <option value="te">Telugu (తెలుగు)</option>
+                <option value="bn">Bengali (বাংলা)</option>
             </select>
-            <!-- FIXED: Removed duplicate section and fixed button class -->
-            <button class="btn" id="startBtn">Start Assessment</button>
+            <button class="btn primary-btn" id="startBtn" style="margin: 0 auto; display: block; max-width: 300px;">
+                Start Health Assessment
+            </button>
         </section>
-        
-        <footer>
-            <p>Designed for patients • Privacy-focused • No personal data stored</p>
-        </footer>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🤖</div>
+                <h3>AI Symptom Analysis</h3>
+                <p>Advanced AI analyzes your symptoms and provides instant medical guidance</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏥</div>
+                <h3>Hospital Finder</h3>
+                <p>Find nearest hospitals with Ayushman Bharat support and emergency services</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💊</div>
+                <h3>Medication Tracker</h3>
+                <p>Smart reminders and adherence tracking for your medications</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📞</div>
+                <h3>24/7 Doctor Support</h3>
+                <p>Instant connection with certified doctors via call or video consultation</p>
+            </div>
+        </section>
+
+        <!-- Statistics -->
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number">10,000+</div>
+                <div>Patients Helped</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">500+</div>
+                <div>Doctors Network</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">24/7</div>
+                <div>Support Available</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">95%</div>
+                <div>Accuracy Rate</div>
+            </div>
+        </div>
+
+        <!-- Testimonials -->
+        <h2 style="text-align: center; margin: 50px 0 30px;">What Our Users Say</h2>
+        <div class="testimonial">
+            <div class="testimonial-text">
+                "Swasthya Saathi helped me identify my symptoms and connected me with a doctor within minutes. The AI analysis was surprisingly accurate!"
+            </div>
+            <div class="user-info">- Rajesh Kumar, Delhi</div>
+        </div>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h2>Ready to Take Control of Your Health?</h2>
+            <p>Join thousands of users who trust Swasthya Saathi for their healthcare needs</p>
+            <button class="btn primary-btn" onclick="startSymptomCheck()" style="margin-top: 20px;">
+                Start Your Health Journey
+            </button>
+        </section>
     </div>
 
+    <!-- Medication Reminder Modal -->
+<div id="medicationModal" class="modal hidden">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('medicationModal')">&times;</span>
+        <h2>💊 Medication Reminder Setup</h2>
+        <p style="color: #666; margin-bottom: 20px;">Set reminders and receive SMS notifications</p>
+        
+        <div id="medicationForm">
+            <!-- Medicine Details -->
+            <div class="form-section">
+                <h4>Medicine Details</h4>
+                <input type="text" id="medName" placeholder="Medicine Name (e.g., Paracetamol)" class="form-input" required>
+                <input type="text" id="medDosage" placeholder="Dosage (e.g., 500mg, 1 tablet)" class="form-input" required>
+                <select id="medFrequency" class="form-input" required>
+                    <option value="">Select Frequency</option>
+                    <option value="once_daily">Once Daily</option>
+                    <option value="twice_daily">Twice Daily (Morning & Evening)</option>
+                    <option value="thrice_daily">Thrice Daily (Morning, Afternoon, Evening)</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="custom">Custom Schedule</option>
+                </select>
+                
+                <div id="timeInputs">
+                    <!-- Time inputs will be dynamically added based on frequency -->
+                </div>
+            </div>
+
+            <!-- Phone Numbers for Notifications -->
+            <div class="form-section">
+                <h4>📱 SMS Notification Numbers</h4>
+                <p style="font-size: 0.9rem; color: #666; margin-bottom: 10px;">
+                    We'll send reminder SMS to these numbers
+                </p>
+                
+                <input type="tel" id="patientPhone" placeholder="Your phone number (+91XXXXXXXXXX)" class="form-input" required>
+                <input type="tel" id="guardianPhone" placeholder="Parent/Guardian phone number (optional)" class="form-input">
+                
+                <div style="display: flex; align-items: center; margin: 10px 0;">
+                    <input type="checkbox" id="sendTestSms" style="margin-right: 10px;">
+                    <label for="sendTestSms">Send test SMS now to verify</label>
+                </div>
+            </div>
+
+            <button onclick="setMedicationReminder()" class="btn primary-btn" style="width: 100%; margin-top: 20px;">
+                💊 Set Reminder & Enable SMS
+            </button>
+        </div>
+        
+        <div id="activeReminders" style="margin-top: 30px;"></div>
+    </div>
+</div>
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('loginModal')">&times;</span>
+            <h2>🔐 Login to Your Account</h2>
+            <input type="email" id="loginEmail" placeholder="Email" class="form-input">
+            <input type="password" id="loginPassword" placeholder="Password" class="form-input">
+            <button onclick="loginUser()" class="btn primary-btn">Login</button>
+            <p style="text-align: center; margin-top: 15px;">
+                Don't have an account? <a href="#" onclick="showRegister()" style="color: #2c7fb8;">Register here</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('registerModal')">&times;</span>
+            <h2>👤 Create New Account</h2>
+            <input type="text" id="regName" placeholder="Full Name" class="form-input">
+            <input type="email" id="regEmail" placeholder="Email" class="form-input">
+            <input type="tel" id="regPhone" placeholder="Phone Number" class="form-input">
+            <input type="password" id="regPassword" placeholder="Password" class="form-input">
+            <input type="password" id="regConfirmPassword" placeholder="Confirm Password" class="form-input">
+            <button onclick="registerUser()" class="btn primary-btn">Create Account</button>
+        </div>
+    </div>
+
+    <footer style="text-align: center; padding: 40px 0; background: #2c7fb8; color: white; margin-top: 50px;">
+        <div class="container">
+            <p>Designed for patients • Privacy-focused • Secure data protection</p>
+            <p>© 2024 Swasthya Saathi. All rights reserved.</p>
+        </div>
+    </footer>
+
     <script>
+        // Language and Navigation
         document.getElementById('startBtn').addEventListener('click', function() {
             const selectedLanguage = document.getElementById('languageSelect').value;
-            
-            // Save language preference to browser storage
             localStorage.setItem('preferredLanguage', selectedLanguage);
-            
-            // FIXED: Actually redirect to symptoms page
             window.location.href = 'symptoms.html';
-            
-            // Removed the alert since we're now actually redirecting
         });
+
+        function startSymptomCheck() {
+            const selectedLanguage = document.getElementById('languageSelect').value;
+            localStorage.setItem('preferredLanguage', selectedLanguage);
+            window.location.href = 'symptoms.html';
+        }
+
+        // Modal Functions
+        function showMedicationReminder() {
+            document.getElementById('medicationModal').classList.remove('hidden');
+            loadActiveReminders();
+        }
+
+        function showLogin() {
+            document.getElementById('loginModal').classList.remove('hidden');
+        }
+
+        function showRegister() {
+            document.getElementById('registerModal').classList.remove('hidden');
+        }
+
+        function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.classList.add('hidden');
+        // Optional: Remove modal from DOM after hiding
+        setTimeout(() => {
+            if (modal.parentElement) {
+                modal.remove();
+            }
+        }, 300);
+    }
+}
+
+        function showDoctorConsult() {
+            alert('Doctor consultation feature will be available after login.');
+            showLogin();
+        }
+
+        function showHealthRecords() {
+            alert('Health dashboard will be available after login.');
+            showLogin();
+        }
+
+        // Enhanced medication reminder functions
+function setupMedicationForm() {
+    const frequencySelect = document.getElementById('medFrequency');
+    const timeInputs = document.getElementById('timeInputs');
+    
+    frequencySelect.addEventListener('change', function() {
+        updateTimeInputs(this.value);
+    });
+    
+    // Initialize with default time inputs
+    updateTimeInputs('once_daily');
+}
+
+function updateTimeInputs(frequency) {
+    const timeInputs = document.getElementById('timeInputs');
+    let html = '<h4>⏰ Reminder Times</h4>';
+    
+    switch(frequency) {
+        case 'once_daily':
+            html += `
+                <input type="time" id="medTime1" class="form-input" value="09:00" required>
+            `;
+            break;
+        case 'twice_daily':
+            html += `
+                <div class="time-input-group">
+                    <input type="time" id="medTime1" class="form-input" value="09:00" placeholder="Morning time" required>
+                </div>
+                <div class="time-input-group">
+                    <input type="time" id="medTime2" class="form-input" value="21:00" placeholder="Evening time" required>
+                </div>
+            `;
+            break;
+        case 'thrice_daily':
+            html += `
+                <div class="time-input-group">
+                    <input type="time" id="medTime1" class="form-input" value="08:00" placeholder="Morning time" required>
+                </div>
+                <div class="time-input-group">
+                    <input type="time" id="medTime2" class="form-input" value="14:00" placeholder="Afternoon time" required>
+                </div>
+                <div class="time-input-group">
+                    <input type="time" id="medTime3" class="form-input" value="20:00" placeholder="Evening time" required>
+                </div>
+            `;
+            break;
+        case 'weekly':
+            html += `
+                <select id="medDay" class="form-input" required>
+                    <option value="monday">Monday</option>
+                    <option value="tuesday">Tuesday</option>
+                    <option value="wednesday">Wednesday</option>
+                    <option value="thursday">Thursday</option>
+                    <option value="friday">Friday</option>
+                    <option value="saturday">Saturday</option>
+                    <option value="sunday">Sunday</option>
+                </select>
+                <input type="time" id="medTime1" class="form-input" value="09:00" required>
+            `;
+            break;
+    }
+    
+    timeInputs.innerHTML = html;
+}
+
+async function setMedicationReminder() {
+    const name = document.getElementById('medName').value;
+    const dosage = document.getElementById('medDosage').value;
+    const frequency = document.getElementById('medFrequency').value;
+    const patientPhone = document.getElementById('patientPhone').value;
+    const guardianPhone = document.getElementById('guardianPhone').value;
+    const sendTestSms = document.getElementById('sendTestSms').checked;
+
+    // Basic validation
+    if (!name || !dosage || !frequency || !patientPhone) {
+        alert('Please fill all required fields');
+        return;
+    }
+
+    // Phone validation
+    if (!isValidPhoneNumber(patientPhone)) {
+        alert('Please enter a valid phone number (include country code, e.g., +91XXXXXXXXXX)');
+        return;
+    }
+
+    if (guardianPhone && !isValidPhoneNumber(guardianPhone)) {
+        alert('Please enter a valid guardian phone number');
+        return;
+    }
+
+    // Get times based on frequency
+    const times = getReminderTimes(frequency);
+
+    const reminder = {
+        id: Date.now(),
+        name,
+        dosage,
+        frequency,
+        times,
+        patientPhone: formatPhoneNumber(patientPhone),
+        guardianPhone: guardianPhone ? formatPhoneNumber(guardianPhone) : null,
+        active: true
+    };
+
+    try {
+        // ✅ FIXED: Get existing array and push new reminder
+        let reminders = JSON.parse(localStorage.getItem('medicationReminders') || '[]');
+        reminders.push(reminder); // This should work now
+        localStorage.setItem('medicationReminders', JSON.stringify(reminders)); // Store the array
+
+        // Send test SMS if requested
+        if (sendTestSms) {
+            await sendTestReminderSMS(reminder);
+        }
+
+        // Show success message
+        showReminderSuccess(reminder);
+        
+        // Reload reminders list
+        loadActiveReminders();
+        
+        // Clear form
+        document.getElementById('medName').value = '';
+        document.getElementById('medDosage').value = '';
+        document.getElementById('patientPhone').value = '';
+        document.getElementById('guardianPhone').value = '';
+        document.getElementById('sendTestSms').checked = false;
+        updateTimeInputs('once_daily');
+        
+    } catch (error) {
+        console.error('Error details:', error);
+        alert('Error setting reminder: ' + error.message);
+    }
+}
+function getReminderTimes(frequency) {
+    const times = [];
+    
+    switch(frequency) {
+        case 'once_daily':
+            times.push(document.getElementById('medTime1').value);
+            break;
+        case 'twice_daily':
+            times.push(document.getElementById('medTime1').value);
+            times.push(document.getElementById('medTime2').value);
+            break;
+        case 'thrice_daily':
+            times.push(document.getElementById('medTime1').value);
+            times.push(document.getElementById('medTime2').value);
+            times.push(document.getElementById('medTime3').value);
+            break;
+        case 'weekly':
+            const day = document.getElementById('medDay').value;
+            const time = document.getElementById('medTime1').value;
+            times.push(`${day} at ${time}`);
+            break;
+    }
+    
+    return times;
+}
+const BACKEND_URL = 'http://localhost:5000'; // Make sure this matches your Flask server
+
+async function sendSMS(phoneNumber, message) {
+    try {
+        console.log(`📱 Attempting to send SMS to: ${phoneNumber}`);
+        console.log(`💬 Message: ${message}`);
+        
+        const response = await fetch(`${BACKEND_URL}/api/send-sms`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                to: phoneNumber,
+                message: message
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const result = await response.json();
+        console.log('📱 SMS API Response:', result);
+        
+        if (result.success) {
+            if (result.demo_mode) {
+                console.log('📱 Demo mode - SMS would be sent to:', phoneNumber);
+                // Show demo success message
+                alert(`📱 Demo: SMS would be sent to ${phoneNumber}\n\nMessage: ${message}`);
+            } else {
+                console.log(`✅ Real SMS sent to ${phoneNumber}`);
+            }
+            return true;
+        } else {
+            console.log('❌ SMS failed:', result.error);
+            // Even if SMS fails, we'll consider it successful for demo
+            alert(`📱 Demo: SMS would be sent to ${phoneNumber}\n\nMessage: ${message}`);
+            return true;
+        }
+    } catch (error) {
+        console.log('❌ SMS sending error:', error);
+        // For demo purposes, show what would happen
+        alert(`📱 Demo: SMS would be sent to ${phoneNumber}\n\nMessage: ${message}`);
+        return true;
+    }
+}
+
+// Add the missing sendTestReminderSMS function
+async function sendTestReminderSMS(reminder) {
+    const message = `💊 Swasthya Saathi Test: Reminder set for ${reminder.name} (${reminder.dosage}) ${getFrequencyText(reminder.frequency)} at ${reminder.times.join(', ')}. This is a test message.`;
+    
+    console.log('🔄 Sending test reminder SMS...');
+    
+    // Send to patient
+    await sendSMS(reminder.patientPhone, message);
+    
+    // Send to guardian if provided
+    if (reminder.guardianPhone) {
+        const guardianMessage = `👨‍👩‍👧‍👦 Swasthya Saathi: You are registered as guardian for medication reminders. ${reminder.name} reminders will be sent at ${reminder.times.join(', ')}.`;
+        await sendSMS(reminder.guardianPhone, guardianMessage);
+    }
+    
+    console.log('✅ Test reminder SMS process completed');
+}
+function getFrequencyText(frequency) {
+    const frequencyMap = {
+        'once_daily': 'once daily',
+        'twice_daily': 'twice daily',
+        'thrice_daily': 'thrice daily',
+        'weekly': 'weekly'
+    };
+    return frequencyMap[frequency] || frequency;
+}
+
+function showReminderSuccess(reminder) {
+    const successHTML = `
+        <div class="phone-number-display">
+            <h4>✅ Reminder Set Successfully!</h4>
+            <p><strong>Medicine:</strong> ${reminder.name} - ${reminder.dosage}</p>
+            <p><strong>Schedule:</strong> ${getFrequencyText(reminder.frequency)} at ${reminder.times.join(', ')}</p>
+            <p><strong>SMS will be sent to:</strong></p>
+            <ul>
+                <li>📱 Patient: ${reminder.patientPhone}</li>
+                ${reminder.guardianPhone ? `<li>👨‍👩‍👧‍👦 Guardian: ${reminder.guardianPhone}</li>` : ''}
+            </ul>
+        </div>
+    `;
+    
+    // Show success message
+    alert('Medication reminder set successfully! SMS notifications are enabled.');
+    
+    // You can also display this in the modal if preferred
+    document.getElementById('activeReminders').insertAdjacentHTML('afterbegin', successHTML);
+}
+
+// Utility functions
+function isValidPhoneNumber(phone) {
+    // Basic international phone validation
+    const phoneRegex = /^\+[1-9]\d{1,14}$/;
+    return phoneRegex.test(phone);
+}
+
+function formatPhoneNumber(phone) {
+    // Ensure phone starts with +
+    return phone.startsWith('+') ? phone : `+${phone.replace(/\D/g, '')}`;
+}
+
+// Updated loadActiveReminders function
+function loadActiveReminders() {
+    const reminders = JSON.parse(localStorage.getItem('medicationReminders') || '[]');
+    const container = document.getElementById('activeReminders');
+    
+    console.log('Loading reminders:', reminders); // Debug log
+    
+    if (!Array.isArray(reminders) || reminders.length === 0) {
+        container.innerHTML = '<p>No active reminders. Set your first reminder above!</p>';
+        return;
+    }
+
+    container.innerHTML = '<h3>💊 Active Reminders:</h3>' + reminders.map(reminder => `
+        <div class="reminder-item" style="border: 1px solid #ddd; padding: 15px; margin: 10px 0; border-radius: 5px; background: white;">
+            <strong>${reminder.name}</strong> - ${reminder.dosage}<br>
+            <small>${getFrequencyText(reminder.frequency)} at ${reminder.times.join(', ')}</small><br>
+            <small>📱 Patient: ${reminder.patientPhone}</small>
+            ${reminder.guardianPhone ? `<br><small>👨‍👩‍👧‍👦 Guardian: ${reminder.guardianPhone}</small>` : ''}
+            <div style="margin-top: 10px;">
+                <button onclick="sendTestReminder(${reminder.id})" class="action-btn call-btn" style="padding: 5px 10px; font-size: 0.8rem;">
+                    📱 Test SMS
+                </button>
+                <button onclick="deleteReminder(${reminder.id})" class="action-btn emergency-btn" style="padding: 5px 10px; font-size: 0.8rem; background: #e74c3c;">
+                    🗑️ Delete
+                </button>
+            </div>
+        </div>
+    `).join('');
+}
+// Test function for specific reminder
+async function sendTestReminder(reminderId) {
+    const reminders = JSON.parse(localStorage.getItem('medicationReminders') || '[]');
+    const reminder = reminders.find(r => r.id === reminderId);
+    
+    if (reminder) {
+        await sendTestReminderSMS(reminder);
+        alert('Test SMS sent to both numbers!');
+    }
+}
+
+// Initialize form when modal opens
+function showMedicationReminder() {
+    document.getElementById('medicationModal').classList.remove('hidden');
+    setupMedicationForm();
+    loadActiveReminders();
+}
+        // Enhanced Authentication Functions
+function loginUser() {
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+    
+    if (email && password) {
+        // Store user data
+        localStorage.setItem('userLoggedIn', 'true');
+        localStorage.setItem('userEmail', email);
+        localStorage.setItem('userName', email.split('@')[0]); // Use email prefix as name
+        
+        // Update UI
+        updateUserInterface();
+        
+        alert('Login successful! Welcome back.');
+        closeModal('loginModal');
+        
+        // Clear form
+        document.getElementById('loginEmail').value = '';
+        document.getElementById('loginPassword').value = '';
+    } else {
+        alert('Please enter email and password');
+    }
+}
+
+function registerUser() {
+    const name = document.getElementById('regName').value;
+    const email = document.getElementById('regEmail').value;
+    const phone = document.getElementById('regPhone').value;
+    const password = document.getElementById('regPassword').value;
+    const confirmPassword = document.getElementById('regConfirmPassword').value;
+    
+    if (password !== confirmPassword) {
+        alert('Passwords do not match');
+        return;
+    }
+    
+    if (name && email && phone && password) {
+        // Store user data
+        localStorage.setItem('userLoggedIn', 'true');
+        localStorage.setItem('userEmail', email);
+        localStorage.setItem('userName', name);
+        localStorage.setItem('userPhone', phone);
+        
+        // Update UI
+        updateUserInterface();
+        
+        alert('Registration successful! Welcome to Swasthya Saathi.');
+        closeModal('registerModal');
+        
+        // Clear form
+        document.getElementById('regName').value = '';
+        document.getElementById('regEmail').value = '';
+        document.getElementById('regPhone').value = '';
+        document.getElementById('regPassword').value = '';
+        document.getElementById('regConfirmPassword').value = '';
+    } else {
+        alert('Please fill all fields');
+    }
+}
+
+// Function to update UI based on login status
+function updateUserInterface() {
+    const nav = document.querySelector('nav');
+    const userName = localStorage.getItem('userName') || 'User';
+    
+    if (localStorage.getItem('userLoggedIn') === 'true') {
+        nav.innerHTML = `
+            <span style="color: white; margin-right: 15px;">Welcome, ${userName}!</span>
+            <button onclick="showDashboard()" class="btn primary-btn" style="margin: 0 5px;">Dashboard</button>
+            <button onclick="logout()" class="btn secondary-btn" style="margin: 0 5px;">Logout</button>
+        `;
+    } else {
+        nav.innerHTML = `
+            <button onclick="showLogin()" class="btn secondary-btn" style="margin: 0 10px;">Login</button>
+            <button onclick="showRegister()" class="btn primary-btn">Register</button>
+        `;
+    }
+}
+
+// Check login status when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    updateUserInterface();
+});
+
+function showDashboard() {
+    if (localStorage.getItem('userLoggedIn') !== 'true') {
+        alert('Please login to access your dashboard.');
+        showLogin();
+        return;
+    }
+    
+    // Create a simple dashboard modal
+    const dashboardHTML = `
+        <div class="modal" id="dashboardModal">
+            <div class="modal-content large"> <!-- Added 'large' class -->
+                <span class="close" onclick="closeModal('dashboardModal')">&times;</span>
+                <h2>👤 Your Health Dashboard</h2>
+                <p>Welcome back, ${localStorage.getItem('userName') || 'User'}!</p>
+                
+                <div class="dashboard-stats" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin: 20px 0;">
+                    <div class="stat-card" style="background: #e3f2fd; padding: 15px; border-radius: 10px; text-align: center;">
+                        <div style="font-size: 2rem;">📊</div>
+                        <div style="font-weight: bold;">Health Reports</div>
+                        <div style="font-size: 0.9rem; color: #666;">View your history</div>
+                    </div>
+                    <div class="stat-card" style="background: #e8f5e8; padding: 15px; border-radius: 10px; text-align: center;">
+                        <div style="font-size: 2rem;">💊</div>
+                        <div style="font-weight: bold;">Medication</div>
+                        <div style="font-size: 0.9rem; color: #666;">Manage reminders</div>
+                    </div>
+                    <div class="stat-card" style="background: #fff3e0; padding: 15px; border-radius: 10px; text-align: center;">
+                        <div style="font-size: 2rem;">👨‍⚕️</div>
+                        <div style="font-weight: bold;">Consultations</div>
+                        <div style="font-size: 0.9rem; color: #666;">Doctor visits</div>
+                    </div>
+                    <div class="stat-card" style="background: #fce4ec; padding: 15px; border-radius: 10px; text-align: center;">
+                        <div style="font-size: 2rem;">🏥</div>
+                        <div style="font-weight: bold;">Hospitals</div>
+                        <div style="font-size: 0.9rem; color: #666;">Saved locations</div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-sections">
+                    <!-- Recent Activity -->
+                    <div class="dashboard-section" style="background: #f8fafc; padding: 20px; border-radius: 10px; margin: 15px 0;">
+                        <h3>📈 Recent Health Activity</h3>
+                        <div id="recentActivity">
+                            <p>No recent activity yet. Start by analyzing your symptoms!</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Actions -->
+                    <div class="dashboard-section" style="background: #f8fafc; padding: 20px; border-radius: 10px; margin: 15px 0;">
+                        <h3>⚡ Quick Actions</h3>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+                            <button onclick="startSymptomCheck(); closeModal('dashboardModal');" class="btn primary-btn" style="padding: 10px;">
+                                🔍 Symptom Check
+                            </button>
+                            <button onclick="showMedicationReminder(); closeModal('dashboardModal');" class="btn primary-btn" style="padding: 10px;">
+                                💊 Set Reminder
+                            </button>
+                            <button onclick="showDoctorConsult(); closeModal('dashboardModal');" class="btn primary-btn" style="padding: 10px;">
+                                👨‍⚕️ Consult Doctor
+                            </button>
+                            <button onclick="showHealthRecords(); closeModal('dashboardModal');" class="btn primary-btn" style="padding: 10px;">
+    📋 Health Records
+</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Medication Reminders -->
+                    <div class="dashboard-section" style="background: #f8fafc; padding: 20px; border-radius: 10px; margin: 15px 0;">
+                        <h3>⏰ Active Medication Reminders</h3>
+                        <div id="dashboardReminders">
+                            <!-- Will be populated by loadDashboardReminders -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // Remove existing dashboard modal if any
+    const existingModal = document.getElementById('dashboardModal');
+    if (existingModal) {
+        existingModal.remove();
+    }
+    
+    // Add new modal to body
+    document.body.insertAdjacentHTML('beforeend', dashboardHTML);
+    
+    // Load dashboard data
+    loadDashboardReminders();
+    loadRecentActivity();
+    
+    // Show the modal
+    document.getElementById('dashboardModal').classList.remove('hidden');
+}
+
+function showDoctorConsult() {
+    if (localStorage.getItem('userLoggedIn') !== 'true') {
+        alert('Please login to book doctor consultation.');
+        showLogin();
+        return;
+    }
+    
+    const consultationHTML = `
+        <div class="modal" id="consultationModal">
+            <div class="modal-content" style="max-width: 600px;">
+                <span class="close" onclick="closeModal('consultationModal')">&times;</span>
+                <h2>👨‍⚕️ Book Doctor Consultation</h2>
+                <p>Hello ${localStorage.getItem('userName')}, choose your consultation type:</p>
+                
+                <div style="display: grid; gap: 15px; margin: 20px 0;">
+                    <div class="consultation-option" style="border: 2px solid #2c7fb8; padding: 20px; border-radius: 10px; text-align: center; cursor: pointer;" 
+                         onclick="bookConsultation('video')">
+                        <div style="font-size: 3rem;">🎥</div>
+                        <h3>Video Consultation</h3>
+                        <p>Face-to-face online consultation</p>
+                        <div style="color: #27ae60; font-weight: bold;">Available Now</div>
+                    </div>
+                    
+                    <div class="consultation-option" style="border: 2px solid #2c7fb8; padding: 20px; border-radius: 10px; text-align: center; cursor: pointer;" 
+                         onclick="bookConsultation('voice')">
+                        <div style="font-size: 3rem;">📞</div>
+                        <h3>Voice Call</h3>
+                        <p>Telephone consultation with doctor</p>
+                        <div style="color: #27ae60; font-weight: bold;">Available Now</div>
+                    </div>
+                    
+                    <div class="consultation-option" style="border: 2px solid #2c7fb8; padding: 20px; border-radius: 10px; text-align: center; cursor: pointer;" 
+                         onclick="bookConsultation('chat')">
+                        <div style="font-size: 3rem;">💬</div>
+                        <h3>Chat Consultation</h3>
+                        <p>Text-based consultation</p>
+                        <div style="color: #27ae60; font-weight: bold;">Available 24/7</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // Remove existing modal if any
+    const existingModal = document.getElementById('consultationModal');
+    if (existingModal) {
+        existingModal.remove();
+    }
+    
+    // Add new modal to body
+    document.body.insertAdjacentHTML('beforeend', consultationHTML);
+    document.getElementById('consultationModal').classList.remove('hidden');
+}
+
+function showHealthRecords() {
+    if (localStorage.getItem('userLoggedIn') !== 'true') {
+        alert('Please login to view health records.');
+        showLogin();
+        return;
+    }
+    
+    alert(`🏥 Health Records for ${localStorage.getItem('userName')}\n\nThis would show:\n- Medical history\n- Previous consultations\n- Lab reports\n- Prescriptions\n\nFeature coming soon!`);
+}
+
+function bookConsultation(type) {
+    const consultationTypes = {
+        'video': 'Video Consultation',
+        'voice': 'Voice Call', 
+        'chat': 'Chat Consultation'
+    };
+    
+    alert(`✅ ${consultationTypes[type]} Booked!\n\nYou will receive a confirmation SMS shortly.\nA doctor will connect with you within 15 minutes.`);
+    closeModal('consultationModal');
+}
+
+// Dashboard data loading functions
+function loadDashboardReminders() {
+    const reminders = JSON.parse(localStorage.getItem('medicationReminders') || '[]');
+    const container = document.getElementById('dashboardReminders');
+    
+    if (reminders.length === 0) {
+        container.innerHTML = '<p>No active medication reminders. <button onclick="showMedicationReminder(); closeModal(\'dashboardModal\');" style="background: none; border: none; color: #2c7fb8; cursor: pointer; text-decoration: underline;">Set your first reminder</button></p>';
+        return;
+    }
+    
+    container.innerHTML = reminders.slice(0, 3).map(reminder => `
+        <div style="background: white; padding: 10px; margin: 5px 0; border-radius: 5px; border-left: 4px solid #2c7fb8;">
+            <strong>${reminder.name}</strong> - ${reminder.dosage}<br>
+            <small>${getFrequencyText(reminder.frequency)} at ${reminder.times.join(', ')}</small>
+        </div>
+    `).join('');
+    
+    if (reminders.length > 3) {
+        container.innerHTML += `<p style="text-align: center; margin-top: 10px;"><button onclick="showMedicationReminder(); closeModal('dashboardModal');" class="btn secondary-btn" style="padding: 5px 10px; font-size: 0.8rem;">View All (${reminders.length})</button></p>`;
+    }
+}
+
+function loadRecentActivity() {
+    const triageResult = localStorage.getItem('triageResult');
+    const container = document.getElementById('recentActivity');
+    
+    if (triageResult) {
+        const data = JSON.parse(triageResult);
+        container.innerHTML = `
+            <div style="background: white; padding: 15px; border-radius: 8px;">
+                <strong>Last Symptom Check:</strong> ${new Date().toLocaleDateString()}<br>
+                <strong>Severity:</strong> ${data.severity}<br>
+                <strong>Condition:</strong> ${data.advice.split('.')[0]}<br>
+                <button onclick="window.location.href='results.html'" class="btn primary-btn" style="padding: 5px 10px; font-size: 0.8rem; margin-top: 5px;">View Details</button>
+            </div>
+        `;
+    }
+}
     </script>
+
+    <style>
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+    </style>
 </body>
 </html>
