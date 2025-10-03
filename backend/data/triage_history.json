@@ -211,5 +211,41 @@
       "reasoning": "AI analysis unavailable - defaulting to doctor consultation"
     },
     "session_id": "20251004005019"
+  },
+  {
+    "timestamp": "2025-10-04T00:56:44.880501",
+    "user_data": {
+      "phone": "",
+      "location": {
+        "lat": 30.6742,
+        "lng": 76.7104
+      },
+      "ayushman_card": false
+    },
+    "symptoms": "I have been experiencing fever and headache since morning. Also feeling body pain and weakness. Along with some stomach pain",
+    "triage_result": {
+      "severity": "OPD Visit",
+      "advice": "Please schedule an appointment with your doctor for a thorough evaluation. In the meantime, ensure you stay well-hydrated, get adequate rest, and monitor your symptoms closely for any worsening or new developments.",
+      "reasoning": "The combination of fever, headache, body pain, weakness, and stomach pain suggests a systemic illness that warrants medical assessment. While not immediately indicative of a life-threatening emergency, these symptoms could point to various infections or conditions that require professional diagnosis and management to prevent complications and ensure appropriate treatment."
+    },
+    "session_id": "20251004005644"
+  },
+  {
+    "timestamp": "2025-10-04T01:36:27.025208",
+    "user_data": {
+      "phone": "",
+      "location": {
+        "lat": 31.236677000000004,
+        "lng": 75.55450700000002
+      },
+      "ayushman_card": false
+    },
+    "symptoms": "I have been experiencing fever and headache since morning. Also feeling body pain and weakness.",
+    "triage_result": {
+      "severity": "OPD Visit",
+      "advice": "Monitor your symptoms closely, stay hydrated, and get adequate rest. It is recommended to consult a doctor for a proper diagnosis and treatment plan, especially if symptoms worsen or do not improve within 24-48 hours.",
+      "reasoning": "Fever, headache, body pain, and weakness are general symptoms that can indicate various conditions, from common viral infections to more significant issues. An OPD visit is advised to allow a medical professional to assess the severity, rule out serious causes, and provide appropriate guidance and treatment."
+    },
+    "session_id": "20251004013627"
   }
 ]

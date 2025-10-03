@@ -37,7 +37,7 @@
         
         .feature-card {
             background: white;
-            padding: 30px;
+            padding: 20px;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             text-align: center;
@@ -274,7 +274,7 @@
     <div class="modal-content">
         <span class="close" onclick="closeModal('medicationModal')">&times;</span>
         <h2>💊 Medication Reminder Setup</h2>
-        <p style="color: #666; margin-bottom: 20px;">Set reminders and receive SMS notifications</p>
+        <p style="color: #666; margin-bottom: 2px;">Set reminders and receive SMS notifications</p>
         
         <div id="medicationForm">
             <!-- Medicine Details -->
@@ -351,7 +351,7 @@
     <footer style="text-align: center; padding: 40px 0; background: #2c7fb8; color: white; margin-top: 50px;">
         <div class="container">
             <p>Designed for patients • Privacy-focused • Secure data protection</p>
-            <p>© 2024 Swasthya Saathi. All rights reserved.</p>
+            <p>© 2025 Swasthya Saathi by Karuna, Bhavya & Manish. All rights reserved.</p>
         </div>
     </footer>
 
@@ -406,7 +406,7 @@
             showLogin();
         }
 
-        // Enhanced medication reminder functions
+      // Enhanced medication reminder functions
 function setupMedicationForm() {
     const frequencySelect = document.getElementById('medFrequency');
     const timeInputs = document.getElementById('timeInputs');
@@ -471,6 +471,7 @@ function updateTimeInputs(frequency) {
     timeInputs.innerHTML = html;
 }
 
+// FIXED: Proper array handling for medication reminders
 async function setMedicationReminder() {
     const name = document.getElementById('medName').value;
     const dosage = document.getElementById('medDosage').value;
@@ -513,8 +514,14 @@ async function setMedicationReminder() {
     try {
         // ✅ FIXED: Get existing array and push new reminder
         let reminders = JSON.parse(localStorage.getItem('medicationReminders') || '[]');
-        reminders.push(reminder); // This should work now
-        localStorage.setItem('medicationReminders', JSON.stringify(reminders)); // Store the array
+        
+        // Ensure it's an array
+        if (!Array.isArray(reminders)) {
+            reminders = [];
+        }
+        
+        reminders.push(reminder);
+        localStorage.setItem('medicationReminders', JSON.stringify(reminders));
 
         // Send test SMS if requested
         if (sendTestSms) {
@@ -540,6 +547,7 @@ async function setMedicationReminder() {
         alert('Error setting reminder: ' + error.message);
     }
 }
+
 function getReminderTimes(frequency) {
     const times = [];
     
@@ -564,6 +572,15 @@ function getReminderTimes(frequency) {
     }
     
     return times;
+}
+
+// Delete reminder function
+function deleteReminder(reminderId) {
+    let reminders = JSON.parse(localStorage.getItem('medicationReminders') || '[]');
+    reminders = reminders.filter(reminder => reminder.id !== reminderId);
+    localStorage.setItem('medicationReminders', JSON.stringify(reminders));
+    loadActiveReminders();
+    alert('Reminder deleted successfully!');
 }
 const BACKEND_URL = 'http://localhost:5000'; // Make sure this matches your Flask server
 
@@ -719,7 +736,7 @@ function showMedicationReminder() {
     setupMedicationForm();
     loadActiveReminders();
 }
-        // Enhanced Authentication Functions
+// Enhanced Authentication Functions
 function loginUser() {
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
@@ -728,12 +745,12 @@ function loginUser() {
         // Store user data
         localStorage.setItem('userLoggedIn', 'true');
         localStorage.setItem('userEmail', email);
-        localStorage.setItem('userName', email.split('@')[0]); // Use email prefix as name
+        localStorage.setItem('userName', email.split('@')[0]);
         
         // Update UI
         updateUserInterface();
         
-        alert('Login successful! Welcome back.');
+        alert('✅ Login successful! Welcome back.');
         closeModal('loginModal');
         
         // Clear form
@@ -742,6 +759,18 @@ function loginUser() {
     } else {
         alert('Please enter email and password');
     }
+}
+
+// FIXED: Proper logout function
+function logout() {
+    localStorage.removeItem('userLoggedIn');
+    localStorage.removeItem('userEmail');
+    localStorage.removeItem('userName');
+    localStorage.removeItem('userPhone');
+    
+    updateUserInterface();
+    alert('👋 Logged out successfully!');
+    window.location.reload();
 }
 
 function registerUser() {
@@ -766,7 +795,7 @@ function registerUser() {
         // Update UI
         updateUserInterface();
         
-        alert('Registration successful! Welcome to Swasthya Saathi.');
+        alert('🎉 Registration successful! Welcome to Swasthya Saathi.');
         closeModal('registerModal');
         
         // Clear form
@@ -780,6 +809,29 @@ function registerUser() {
     }
 }
 
+// FIXED: Enhanced modal close function
+function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.animation = 'modalSlideOut 0.3s ease';
+        setTimeout(() => {
+            modal.classList.add('hidden');
+            modal.style.animation = '';
+        }, 250);
+    }
+}
+
+// Add this CSS for modal close animation
+const modalCloseAnimation = `
+@keyframes modalSlideOut {
+    from { opacity: 1; transform: translateY(0) scale(1); }
+    to { opacity: 0; transform: translateY(-50px) scale(0.9); }
+}
+`;
+const styleSheet = document.createElement('style');
+styleSheet.textContent = modalCloseAnimation;
+document.head.appendChild(styleSheet);
+
 // Function to update UI based on login status
 function updateUserInterface() {
     const nav = document.querySelector('nav');
@@ -787,14 +839,14 @@ function updateUserInterface() {
     
     if (localStorage.getItem('userLoggedIn') === 'true') {
         nav.innerHTML = `
-            <span style="color: white; margin-right: 15px;">Welcome, ${userName}!</span>
-            <button onclick="showDashboard()" class="btn primary-btn" style="margin: 0 5px;">Dashboard</button>
-            <button onclick="logout()" class="btn secondary-btn" style="margin: 0 5px;">Logout</button>
+            <span style="color: var(--dark); margin-right: 15px; font-weight: 600;">👋 Welcome, ${userName}!</span>
+            <button onclick="showDashboard()" class="btn primary-btn" style="margin: 0 5px; padding: 0.8rem 1.5rem;">Dashboard</button>
+            <button onclick="logout()" class="btn secondary-btn" style="margin: 0 5px; padding: 0.8rem 1.5rem;">Logout</button>
         `;
     } else {
         nav.innerHTML = `
-            <button onclick="showLogin()" class="btn secondary-btn" style="margin: 0 10px;">Login</button>
-            <button onclick="showRegister()" class="btn primary-btn">Register</button>
+            <button onclick="showLogin()" class="btn secondary-btn" style="margin: 0 10px; padding: 0.8rem 1.5rem;">Login</button>
+            <button onclick="showRegister()" class="btn primary-btn" style="padding: 0.8rem 1.5rem;">Register</button>
         `;
     }
 }
@@ -802,7 +854,23 @@ function updateUserInterface() {
 // Check login status when page loads
 document.addEventListener('DOMContentLoaded', function() {
     updateUserInterface();
+    
+    // Add home button to all pages
+    addHomeButton();
 });
+
+// Function to add home button to all pages
+function addHomeButton() {
+    if (!document.getElementById('homeButton')) {
+        const homeButton = document.createElement('a');
+        homeButton.id = 'homeButton';
+        homeButton.className = 'home-btn';
+        homeButton.href = 'index.html';
+        homeButton.innerHTML = '🏠';
+        homeButton.title = 'Go to Home';
+        document.body.appendChild(homeButton);
+    }
+}
 
 function showDashboard() {
     if (localStorage.getItem('userLoggedIn') !== 'true') {
@@ -1031,7 +1099,7 @@ function loadRecentActivity() {
 
         .modal-content {
             background: white;
-            padding: 30px;
+            padding: 20px;
             border-radius: 15px;
             width: 90%;
             max-width: 500px;
