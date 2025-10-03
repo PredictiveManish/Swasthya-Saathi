@@ -16,5 +16,41 @@
       "reasoning": "AI analysis unavailable - defaulting to doctor consultation"
     },
     "session_id": "20251003170818"
+  },
+  {
+    "timestamp": "2025-10-03T17:22:51.694039",
+    "user_data": {
+      "phone": "",
+      "location": {
+        "lat": 31.236787,
+        "lng": 75.55448066666668
+      },
+      "ayushman_card": true
+    },
+    "symptoms": "I have fever",
+    "triage_result": {
+      "severity": "OPD Visit",
+      "advice": "Please consult a healthcare provider for proper diagnosis",
+      "reasoning": "AI analysis unavailable - defaulting to doctor consultation"
+    },
+    "session_id": "20251003172251"
+  },
+  {
+    "timestamp": "2025-10-03T17:44:12.477452",
+    "user_data": {
+      "phone": "",
+      "location": {
+        "lat": 31.236787,
+        "lng": 75.55448066666668
+      },
+      "ayushman_card": false
+    },
+    "symptoms": "I have fever, headache",
+    "triage_result": {
+      "severity": "OPD Visit",
+      "advice": "Please consult a healthcare provider for proper diagnosis",
+      "reasoning": "AI analysis unavailable - defaulting to doctor consultation"
+    },
+    "session_id": "20251003174412"
   }
 ]

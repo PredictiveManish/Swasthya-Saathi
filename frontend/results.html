@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results - Swasthya Saathi</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <span class="logo-icon">🏥</span>
+                <span>Swasthya Saathi</span>
+            </div>
+        </header>
+
+        <main class="symptoms-container">
+            <h1>Analysis Results</h1>
+            <div id="resultsContent">
+                <p>Loading results...</p>
+            </div>
+            <button onclick="window.location.href='symptoms.html'" class="btn primary-btn">
+                Back to Symptoms
+            </button>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const results = localStorage.getItem('triageResult');
+            const resultsContent = document.getElementById('resultsContent');
+            
+            if (results) {
+                const data = JSON.parse(results);
+                resultsContent.innerHTML = `
+                    <div style="padding: 20px; border-left: 4px solid #2c7fb8; background: #f8fafc; margin: 20px 0;">
+                        <h2 style="color: #2c7fb8;">Severity: ${data.severity}</h2>
+                        <p><strong>Advice:</strong> ${data.advice}</p>
+                        <p><strong>Reasoning:</strong> ${data.reasoning}</p>
+                    </div>
+                    ${data.hospitals && data.hospitals.length > 0 ? `
+                        <h3>Nearby Hospitals:</h3>
+                        <div style="margin-top: 15px;">
+                            ${data.hospitals.map(hospital => `
+                                <div style="border: 1px solid #e2e8f0; padding: 15px; margin: 10px 0; border-radius: 8px;">
+                                    <h4>${hospital.name}</h4>
+                                    <p>${hospital.address}</p>
+                                    <p>📞 ${hospital.phone}</p>
+                                    <p>${hospital.ayushman ? '✅ Accepts Ayushman Bharat' : '❌ No Ayushman'}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    ` : ''}
+                `;
+            } else {
+                resultsContent.innerHTML = '<p>No results found. Please go back and analyze symptoms again.</p>';
+            }
+        });
+    </script>
+</body>
+</html>
