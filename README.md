@@ -22,7 +22,7 @@ Swasthya Saathi is an innovative AI-powered healthcare platform designed to prov
 
 
 
-## 🚨 Problem Statement
+## 🚨 Problem Statement - HealthTech (Swasthya Saathi)
 
 ### India's Healthcare Crisis in Numbers:
 - **⏰ Emergency Response**: 30+ minutes average ambulance response time in rural areas
@@ -31,15 +31,6 @@ Swasthya Saathi is an innovative AI-powered healthcare platform designed to prov
 - **🗣️ Language Barrier**: 90% of healthcare apps available only in English
 - **💊 Medication Adherence**: 50% of chronic disease patients miss medications regularly
 
-## 💡 Solution
-
-Swasthya Saathi addresses these challenges through:
-
-- **🤖 AI-Powered Triage**: Instant symptom analysis using Google Gemini AI
-- **🎙️ Voice-First Interface**: Multi-lingual support for regional languages
-- **🏥 Smart Hospital Finder**: Ayushman Bharat integrated hospital search
-- **💊 Medication Management**: Family-connected reminder system
-- **📱 Zero-Installation PWA**: Works on any device with browser
 
 ## 📸 Screenshots
 
@@ -69,21 +60,7 @@ Swasthya Saathi addresses these challenges through:
 ![Doctor & Action Plan](assets/image.png)
 </div>
 
-## ✨ Features
 
-### Core Features
-- **🤖 AI Symptom Analysis**: Real-time triage using Gemini AI with 96.2% accuracy
-- **🎙️ Multi-Lingual Voice Input**: Support for English, Hindi, Tamil, Telugu, Bengali
-- **🏥 Smart Hospital Finder**: Location-based search with Ayushman Bharat integration
-- **💊 Medication Management**: Family-connected reminders with SMS alerts
-- **🚨 Emergency Response**: Critical symptom detection and instant hospital mapping
-
-### Advanced Features
-- **📱 Progressive Web App**: No installation required, works offline
-- **👨‍👩‍👧‍👦 Family Coordination**: Multi-contact notifications for emergencies
-- **📍 Geolocation Services**: Real-time distance calculation to hospitals
-- **📊 Health Dashboard**: Personal health history and tracking
-- **🔔 Smart Notifications**: SMS and browser notifications for reminders
 
 ## 🛠️ Technology Stack
 
@@ -133,20 +110,6 @@ Swasthya Saathi addresses these challenges through:
 ### Uniqueness from Others
 ![Uniqueness](assets/unique.png)
 *Difference from pre-existing solutions*
-
-### 💫 Future Vision
-- Create India's largest AI healthcare network
-- Build voice-first healthcare ecosystem
-
-- Scale to serve 100M+ users nationwide
-
-```"Voice-First Access, AI-Powered Care, National Impact"```
-### 🔒 Privacy & Security
-- Data Minimization: Only essential data collected
-- Local Processing: Voice and location data processed locally
-- No PII Storage: Anonymous session management
-- Encrypted Storage: Secure local data persistence
-- Transparent AI: Explainable medical reasoning
 
 🏥 Healthcare Disclaimer
 
