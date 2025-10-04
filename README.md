@@ -83,6 +83,13 @@ Google Gemini API Key - Get from Google AI Studio
 
 Twilio Credentials - Account SID, Auth Token, Phone Number
 
+Create an .env file and 
+GEMINI_API_KEY=your_gemini_api_key_here
+TWILIO_ACCOUNT_SID=your_twilio_sid
+TWILIO_AUTH_TOKEN=your_twilio_token
+TWILIO_PHONE_NUMBER=your_twilio_number
+
+Add all the APIs for proper functioning otherwise it'll be working on Local JSON Database based classification
 Note: Demo mode works without Twilio credentials
 ```
 🏥 Healthcare Disclaimer
