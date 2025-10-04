@@ -265,5 +265,23 @@
       "reasoning": "AI analysis unavailable - defaulting to doctor consultation"
     },
     "session_id": "20251004050255"
+  },
+  {
+    "timestamp": "2025-10-04T07:49:43.644498",
+    "user_data": {
+      "phone": "",
+      "location": {
+        "lat": 31.35605316666667,
+        "lng": 75.56137333333334
+      },
+      "ayushman_card": false
+    },
+    "symptoms": "I have been experiencing fever and headache since morning. Also feeling body pain and weakness.",
+    "triage_result": {
+      "severity": "OPD Visit",
+      "advice": "Please schedule an appointment with your doctor for a thorough examination. Until then, ensure adequate rest, stay well-hydrated, and consider over-the-counter fever and pain relief as directed.",
+      "reasoning": "The combination of fever, headache, body pain, and weakness suggests a systemic illness that warrants medical evaluation. A doctor can assess the severity, rule out more serious infections, and provide an appropriate diagnosis and treatment plan."
+    },
+    "session_id": "20251004074943"
   }
 ]
