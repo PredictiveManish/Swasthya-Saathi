@@ -247,5 +247,23 @@
       "reasoning": "Fever, headache, body pain, and weakness are general symptoms that can indicate various conditions, from common viral infections to more significant issues. An OPD visit is advised to allow a medical professional to assess the severity, rule out serious causes, and provide appropriate guidance and treatment."
     },
     "session_id": "20251004013627"
+  },
+  {
+    "timestamp": "2025-10-04T05:02:55.737220",
+    "user_data": {
+      "phone": "",
+      "location": {
+        "lat": 31.360365,
+        "lng": 75.55912
+      },
+      "ayushman_card": false
+    },
+    "symptoms": "I have been experiencing fever and headache since morning. Also feeling body pain and weakness.",
+    "triage_result": {
+      "severity": "OPD Visit",
+      "advice": "Please consult a healthcare provider for proper diagnosis.",
+      "reasoning": "AI analysis unavailable - defaulting to doctor consultation"
+    },
+    "session_id": "20251004050255"
   }
 ]
