@@ -46,23 +46,23 @@ Swasthya Saathi addresses these challenges through:
 <div align="center">
 
 ### Landing Page
-![Landing Page](assets/landing-page.png)
+![Landing Page](frontend/assets/assets/landing-page.png)
 *Modern, responsive landing page with feature overview*
 
 ### Symptom Analysis
-![Symptom Analysis](assets/symptom-analysis.png)
+![Symptom Analysis](frontend/assets/symptom-analysis.png)
 *Voice and text input for symptom description*
 
 ### Results Dashboard
-![Results Dashboard](assets/results-dashboard.png)
+![Results Dashboard](frontend/assets/results-dashboard.png)
 *AI analysis results with hospital recommendations*
 
 ### Medication Reminders
-![Medication Reminders](assets/medication-reminders.png)
+![Medication Reminders](frontend/assets/medication-reminders.png)
 *Smart medication scheduling with SMS alerts*
 
 ### Hospital Finder
-![Hospital Finder](assets/hospital-finder.png)
+![Hospital Finder](frontend/assets/hospital-finder.png)
 *Location-based hospital search with Ayushman filters*
 
 </div>
