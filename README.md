@@ -27,9 +27,9 @@
 - **Manish Tiwari** - Backend Developer & AI Integration
   - Flask API development, Gemini AI integration, Hospital finder logic, JSON databases, API integration, Testing & deployment
 - **Karuna Sharma** - Frontend Developer & UI/UX
-  - Responsive web design, Voice interface, JavaScript functionality
+  - Responsive web design, Voice interface, JavaScript functionality, Presentation
 - **Bhavya Kochar** - Product Manager & Strategy
-  - User research, Impact analysis, Scaling strategy
+  - User research, Impact analysis, Scaling strategy, Presentation
 
 
 
