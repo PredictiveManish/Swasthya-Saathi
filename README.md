@@ -1,9 +1,5 @@
 # 🏥 Swasthya Saathi - AI-Powered Healthcare Companion
 
-## 👥 Team Information
-
-**Team Name:** Aryavarti  
-**Team ID:** T140
 
 <div align="center">
 
@@ -18,6 +14,10 @@
 
 
 </div>
+## 👥 Team Information
+
+**Team Name:** Aryavarti  
+**Team ID:** T140
 
 ## 🎯 Overview
 
