@@ -117,3 +117,12 @@ Swasthya Saathi addresses these challenges through:
    ```bash
    git clone https://github.com/your-username/swasthya-saathi.git
    cd swasthya-saathi
+   # Install Python dependencies
+   pip install flask flask-cors python-dotenv twilio google-generativeai
+   or 
+   pip install -r requirements.txt
+
+
+   # Set up environment variables
+   cp .env.example .env
+   #  Add your API keys to .env file
