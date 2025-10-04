@@ -77,6 +77,8 @@ Swasthya Saathi is an innovative AI-powered healthcare platform designed to prov
    python app.py
    ```
 3. Testing
+
+### Extra Details for proper working 
 ```
 Credentials Required:
 Google Gemini API Key - Get from Google AI Studio
