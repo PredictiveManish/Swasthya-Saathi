@@ -24,11 +24,11 @@
 
 
 ### Team Members & Roles:
-- **[Manish Tiwari]** - Backend Developer & AI Integration
+- **Manish Tiwari** - Backend Developer & AI Integration
   - Flask API development, Gemini AI integration, Hospital finder logic, JSON databases, API integration, Testing & deployment
-- **[Karuna Sharma]** - Frontend Developer & UI/UX
+- **Karuna Sharma** - Frontend Developer & UI/UX
   - Responsive web design, Voice interface, JavaScript functionality
-- **[Bhavya Kochar]** - Product Manager & Strategy
+- **Bhavya Kochar** - Product Manager & Strategy
   - User research, Impact analysis, Scaling strategy
 
 
