@@ -24,8 +24,8 @@ Made with ❤️ for India's Healthcare Revolution by Team Aryavart - Hail Aryav
 ```
 ## 👥 Team Information
 
-**Team Name:** Swasthya Saathi  
-**Team ID:** [Your Team ID Here]
+**Team Name:** Aryavarti  
+**Team ID:** T140
 
 ### Team Members & Roles:
 - **[Manish Tiwari]** - Backend Developer & AI Integration
