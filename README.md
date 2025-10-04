@@ -53,7 +53,7 @@ Swasthya Saathi addresses these challenges through:
 *Voice and text input for symptom description*
 
 ### Results Dashboard
-![Results Dashboard](assets/results-dashboard.png)
+![Results Dashboard](assets/result-dashboard.png)
 *AI analysis results with hospital recommendations*
 
 ### Medication Reminders
@@ -64,6 +64,8 @@ Swasthya Saathi addresses these challenges through:
 ![Hospital Finder](assets/hospital-finder.png)
 *Location-based hospital search with Ayushman filters*
 
+### Doctor Consultancy & Action Plan
+![Doctor & Action Plan](assets/image.png)
 </div>
 
 ## ✨ Features
