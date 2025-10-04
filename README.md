@@ -11,7 +11,6 @@
 
 *Voice-First • AI-Powered • Accessible Healthcare*
 
-[Demo Video](#demo) • [Features](#features) • [Installation](#installation) • [Team](#team)
 
 </div>
 
@@ -46,23 +45,23 @@ Swasthya Saathi addresses these challenges through:
 <div align="center">
 
 ### Landing Page
-![Landing Page](frontend/assets/assets/landing-page.png)
+![Landing Page](assets/landing-page.png)
 *Modern, responsive landing page with feature overview*
 
 ### Symptom Analysis
-![Symptom Analysis](frontend/assets/symptom-analysis.png)
+![Symptom Analysis](assets/symptom-analysis.png)
 *Voice and text input for symptom description*
 
 ### Results Dashboard
-![Results Dashboard](frontend/assets/results-dashboard.png)
+![Results Dashboard](assets/results-dashboard.png)
 *AI analysis results with hospital recommendations*
 
 ### Medication Reminders
-![Medication Reminders](frontend/assets/medication-reminders.png)
+![Medication Reminders](assets/medication-reminders.png)
 *Smart medication scheduling with SMS alerts*
 
 ### Hospital Finder
-![Hospital Finder](frontend/assets/hospital-finder.png)
+![Hospital Finder](assets/hospital-finder.png)
 *Location-based hospital search with Ayushman filters*
 
 </div>
@@ -117,12 +116,3 @@ Swasthya Saathi addresses these challenges through:
    ```bash
    git clone https://github.com/your-username/swasthya-saathi.git
    cd swasthya-saathi
-   # Install Python dependencies
-   pip install flask flask-cors python-dotenv twilio google-generativeai
-   or 
-   pip install -r requirements.txt
-
-
-   # Set up environment variables
-   cp .env.example .env
-   #  Add your API keys to .env file
