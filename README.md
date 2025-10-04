@@ -79,10 +79,6 @@ Swasthya Saathi is an innovative AI-powered healthcare platform designed to prov
 3. Testing
 
 
-### Uniqueness from Others
-![Uniqueness](assets/unique.png)
-*Difference from pre-existing solutions*
-
 🏥 Healthcare Disclaimer
 
 Important: Swasthya Saathi is an AI-powered healthcare assistant designed for guidance and triage purposes only. It is not a replacement for professional medical diagnosis, treatment, or emergency services. Always consult qualified healthcare providers for medical concerns and emergencies.
@@ -127,6 +123,10 @@ Open Source Community for invaluable tools and libraries
 ![Doctor & Action Plan](assets/image.png)
 </div>
 
+
+### Uniqueness from Others
+![Uniqueness](assets/unique.png)
+*Difference from pre-existing solutions*
 
 ### 🔧 File Descriptions
 
