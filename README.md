@@ -112,9 +112,24 @@ Swasthya Saathi addresses these challenges through:
 - Google Gemini API key
 - Twilio account (optional, for SMS features)
 
+
 ### Quick Start
 
 1. **Clone the Repository**
    ```bash
    git clone https://github.com/your-username/swasthya-saathi.git
    cd swasthya-saathi
+   ```
+2. **Installing Dependencies & Running**
+   ```
+   pip install -r requirements.txt
+   cd backend 
+   python app.py
+   ```
+3. Testing
+
+
+### Uniqueness from Others
+![Uniqueness](assets/unique.png)
+*Difference from pre-existing solutions*
+
