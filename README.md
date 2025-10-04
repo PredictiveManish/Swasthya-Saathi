@@ -1,4 +1,9 @@
-# 🏥 Swasthya Saathi - AI-Powered Healthcare Assistant
+# 🏥 Swasthya Saathi - AI-Powered Healthcare Companion
+
+## 👥 Team Information
+
+**Team Name:** Aryavarti  
+**Team ID:** T140
 
 <div align="center">
 
@@ -14,7 +19,6 @@
 
 </div>
 
-
 ## 🎯 Overview
 
 Swasthya Saathi is an innovative AI-powered healthcare platform designed to provide instant medical triage, emergency response coordination, and personalized healthcare guidance. Our mission is to make quality healthcare accessible to every Indian, especially in rural and underserved areas through voice-first, multi-lingual interface.
@@ -22,10 +26,7 @@ Swasthya Saathi is an innovative AI-powered healthcare platform designed to prov
 ``` 
 Made with ❤️ for India's Healthcare Revolution by Team Aryavart - Hail Aryavart 
 ```
-## 👥 Team Information
 
-**Team Name:** Aryavarti  
-**Team ID:** T140
 
 ### Team Members & Roles:
 - **[Manish Tiwari]** - Backend Developer & AI Integration
