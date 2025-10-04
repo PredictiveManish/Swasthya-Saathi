@@ -157,7 +157,12 @@ Open Source Community for invaluable tools and libraries
 
 ### Doctor Consultancy & Action Plan
 ![Doctor & Action Plan](assets/image.png)
+*Doctor Consultancy & Action Plan*
+### Medication Reminder Message
+![Medication Reminder Message](assets/medication-message.jpg)
+*Medication Reminder Message Template*
 </div>
+
 
 
 ### Uniqueness from Others
