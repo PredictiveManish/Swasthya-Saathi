@@ -20,12 +20,7 @@
 
 Swasthya Saathi is an innovative AI-powered healthcare platform designed to provide instant medical triage, emergency response coordination, and personalized healthcare guidance. Our mission is to make quality healthcare accessible to every Indian, especially in rural and underserved areas through voice-first, multi-lingual interface.
 
-<div align="center">
 
-### 🚀 Live Demo
-*[Add your demo video link here]*
-
-</div>
 
 ## 🚨 Problem Statement
 
