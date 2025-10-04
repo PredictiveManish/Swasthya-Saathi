@@ -32,34 +32,6 @@ Swasthya Saathi is an innovative AI-powered healthcare platform designed to prov
 - **💊 Medication Adherence**: 50% of chronic disease patients miss medications regularly
 
 
-## 📸 Screenshots
-
-<div align="center">
-
-### Landing Page
-![Landing Page](assets/landing-page.png)
-*Modern, responsive landing page with feature overview*
-
-### Symptom Analysis
-![Symptom Analysis](assets/symptom-analysis.png)
-*Voice and text input for symptom description*
-
-### Results Dashboard
-![Results Dashboard](assets/result-dashboard.png)
-*AI analysis results with hospital recommendations*
-
-### Medication Reminders
-![Medication Reminders](assets/medication-reminders.png)
-*Smart medication scheduling with SMS alerts*
-
-### Hospital Finder
-![Hospital Finder](assets/hospital-finder.png)
-*Location-based hospital search with Ayushman filters*
-
-### Doctor Consultancy & Action Plan
-![Doctor & Action Plan](assets/image.png)
-</div>
-
 
 
 ## 🛠️ Technology Stack
@@ -126,6 +98,34 @@ Twilio for reliable SMS communication services
 
 Open Source Community for invaluable tools and libraries
 ```
+
+## Project Visuals
+
+<div align="center">
+
+### Landing Page
+![Landing Page](assets/landing-page.png)
+*Modern, responsive landing page with feature overview*
+
+### Symptom Analysis
+![Symptom Analysis](assets/symptom-analysis.png)
+*Voice and text input for symptom description*
+
+### Results Dashboard
+![Results Dashboard](assets/result-dashboard.png)
+*AI analysis results with hospital recommendations*
+
+### Medication Reminders
+![Medication Reminders](assets/medication-reminders.png)
+*Smart medication scheduling with SMS alerts*
+
+### Hospital Finder
+![Hospital Finder](assets/hospital-finder.png)
+*Location-based hospital search with Ayushman filters*
+
+### Doctor Consultancy & Action Plan
+![Doctor & Action Plan](assets/image.png)
+</div>
 
 
 ### 🔧 File Descriptions
