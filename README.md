@@ -18,6 +18,7 @@
 ## 🎯 Overview
 
 Swasthya Saathi is an innovative AI-powered healthcare platform designed to provide instant medical triage, emergency response coordination, and personalized healthcare guidance. Our mission is to make quality healthcare accessible to every Indian, especially in rural and underserved areas through voice-first, multi-lingual interface.
+# Made with ❤️ for India's Healthcare Revolution by Team Aryavart - Hail Aryavart 
 
 
 
@@ -133,3 +134,37 @@ Swasthya Saathi addresses these challenges through:
 ![Uniqueness](assets/unique.png)
 *Difference from pre-existing solutions*
 
+### 💫 Future Vision
+- Create India's largest AI healthcare network
+- Build voice-first healthcare ecosystem
+
+- Scale to serve 100M+ users nationwide
+
+```"Voice-First Access, AI-Powered Care, National Impact"```
+### 🔒 Privacy & Security
+- Data Minimization: Only essential data collected
+- Local Processing: Voice and location data processed locally
+- No PII Storage: Anonymous session management
+- Encrypted Storage: Secure local data persistence
+- Transparent AI: Explainable medical reasoning
+
+🏥 Healthcare Disclaimer
+
+Important: Swasthya Saathi is an AI-powered healthcare assistant designed for guidance and triage purposes only. It is not a replacement for professional medical diagnosis, treatment, or emergency services. Always consult qualified healthcare providers for medical concerns and emergencies.
+
+
+```
+🙏 Acknowledgments
+Google Gemini AI for advanced medical reasoning capabilities
+
+Ayushman Bharat for government healthcare scheme integration
+
+Twilio for reliable SMS communication services
+
+Open Source Community for invaluable tools and libraries
+```
+
+
+
+# 🌟 Star History
+https://api.star-history.com/svg?repos=predictivemanish/swasthya-saathi&type=Date
