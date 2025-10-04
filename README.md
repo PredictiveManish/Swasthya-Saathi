@@ -77,8 +77,14 @@ Swasthya Saathi is an innovative AI-powered healthcare platform designed to prov
    python app.py
    ```
 3. Testing
+```
+Credentials Required:
+Google Gemini API Key - Get from Google AI Studio
 
+Twilio Credentials - Account SID, Auth Token, Phone Number
 
+Note: Demo mode works without Twilio credentials
+```
 🏥 Healthcare Disclaimer
 
 Important: Swasthya Saathi is an AI-powered healthcare assistant designed for guidance and triage purposes only. It is not a replacement for professional medical diagnosis, treatment, or emergency services. Always consult qualified healthcare providers for medical concerns and emergencies.
