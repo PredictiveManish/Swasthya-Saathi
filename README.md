@@ -15,19 +15,6 @@
 
 </div>
 
-## 📖 Table of Contents
-- [Overview](#overview)
-- [Problem Statement](#problem-statement)
-- [Solution](#solution)
-- [Screenshots](#screenshots)
-- [Features](#features)
-- [Technology Stack](#technology-stack)
-- [Installation](#installation)
-- [Architecture](#architecture)
-- [API Documentation](#api-documentation)
-- [Impact & Scaling](#impact--scaling)
-- [Team](#team)
-- [License](#license)
 
 ## 🎯 Overview
 
