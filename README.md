@@ -68,9 +68,10 @@ Made with ❤️ for India's Healthcare Revolution by Team Aryavart - Hail Aryav
 
 ### Quick Start
 
-1. **Clone the Repository**
+1. **Fork & Clone the Repository**
+   ``` Fork the repository from https://github.com/predictivemanish/swasthya-saathi.git``` 
    ```bash
-   git clone https://github.com/your-username/swasthya-saathi.git
+   git clone https://github.com/<your-username>/swasthya-saathi.git
    cd swasthya-saathi
    ```
 2. **Installing Dependencies & Running**
