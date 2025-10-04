@@ -165,6 +165,40 @@ Open Source Community for invaluable tools and libraries
 ```
 
 
+### 🔧 File Descriptions
+
+#### **Backend Files**
+- **`app.py`** - Main Flask server with all API endpoints
+- **`gemini_handler.py`** - Google Gemini AI integration for symptom analysis
+- **`hospital_finder.py`** - Location-based hospital search with distance calculation
+- **`ayushman_checker.py`** - Ayushman Bharat card validation and benefits
+- **`data_manager.py`** - JSON data storage and session management
+- **`notification_handler.py`** - Twilio SMS integration for reminders
+
+#### **Frontend Files**
+- **`index.html`** - Landing page with features and user registration
+- **`symptoms.html`** - Symptom input page with voice and text options
+- **`results.html`** - AI analysis results with hospital recommendations
+- **`style.css`** - Complete styling with modern UI components
+- **`main.js`** - Core application logic and API communication
+- **`voice-input.js`** - Web Speech API integration for voice input
+
+#### **Data Files**
+- **`hospitals.json`** - Database of hospitals with locations and services
+- **`ayushman_hospitals.json`** - Ayushman Bharat empaneled hospitals
+- **`symptoms_db.json`** - Medical symptom patterns and emergency indicators
+- **`medications.json`** - Common medicines and dosage information
+- **`triage_history.json`** - User session history and analytics
+- **`users.json`** - User profiles and preferences
+
+### 🗂️ Directory Purpose
+
+- **`backend/`** - Complete server-side logic and AI processing
+- **`frontend/`** - Client-side web application with responsive design
+- **`data/`** - All JSON databases and configuration files
+- **`assets/`** - Images and media files for documentation
+
+This architecture ensures clean separation of concerns, easy maintenance, and scalable development.
 
 # 🌟 Star History
 https://api.star-history.com/svg?repos=predictivemanish/swasthya-saathi&type=Date
